@@ -6,6 +6,7 @@
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+/* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -67,10 +68,12 @@
   display: table;
   clear: both;
 }
+
+/* end of code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 </style>
 	<body>
 	<div id="navi">
-	<a class="link" href="index.html">Home</a><a class="link" href="CTFScore.html">Score</a><a class="link" href="CTFQuestions.html">Questions</a><a class="link" href="CTFAdmin.html">Admin</a>
+	<a class="link" href="index.html">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.html">Admin</a>
 	</div>
 	<div id = "scoreboard">
 		<h1 id = "score">Current Score: 150</h1>
@@ -146,7 +149,7 @@ function validate()
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
-							$rowCount = 1;
+							$rowCount = 0;
 						}
 				}
 				}
@@ -188,6 +191,7 @@ function validate()
 			</div> -->
 </div>
 <script>
+/* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -213,6 +217,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+/* end of Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 </script>
 
 	</body>
