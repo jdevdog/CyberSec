@@ -33,7 +33,7 @@
 			$result = mysqli_query($conn, $sql);
             $count = mysqli_num_rows($result);
             if($count == 1) {
-                    header("location: CTFQuestions.html");
+                    header("location: CTFQuestions.php");
             } else {
                     $error = "Your login name or password is invalid";
             }

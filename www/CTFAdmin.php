@@ -4,6 +4,7 @@
 	<title>Welcome Team1</title>
 	<link rel="stylesheet" href="admin.css">
 	<?php
+		include "credentials.php";
                 // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
                 // Check connection
@@ -29,7 +30,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<body>
 		<div id="navi">
-	<a class="link" href="index.html">Home</a><a class="link" href="CTFScore.html">Score</a><a class="link" href="CTFQuestions.html">Questions</a><a class="link" href="CTFAdmin.html">Admin</a>
+	<a class="link" href="index.php">Home</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
 	</div>
 	<div id = "header">
 		<h1 id = "welcome">Welcome, Admin</h1>

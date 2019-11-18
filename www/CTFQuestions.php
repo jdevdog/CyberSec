@@ -73,7 +73,7 @@
 </style>
 	<body>
 	<div id="navi">
-	<a class="link" href="index.html">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.html">Admin</a>
+	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
 	</div>
 	<div id = "scoreboard">
 		<h1 id = "score">Current Score: 150</h1>
@@ -125,6 +125,7 @@ function validate()
 </div>
 			<h2 id="q1">Questions</h2>
 			<?php
+				include "credentials.php";
 	
 				// Create connection
 				$conn = mysqli_connect($servername, $username, $password, $dbname);
