@@ -1,0 +1,144 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+#btn{
+  background-color: #872434;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#navi{
+  	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #04315a;
+	width: 100%;
+}
+
+.link{
+	color: white;
+	font-size: 24px;
+	padding-left: 15%;
+}
+
+#q1{
+	text-align: center;
+	font-size: 48px;
+	margin-top: -18px;
+	margin-bottom: 3px;
+}
+
+.qbtn{
+  background-color: #872434;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#answer{
+	  width: 30%;
+	  /*border: 3px solid #fff;*/
+      border-radius: 12px;
+      padding: 14px;
+}
+
+#scoreboard{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: lightgray;
+	width: 100%;
+}
+
+
+p{
+	font-size: 24px;
+}
+
+#score{
+	border-style: solid;
+  	border-width: 2px 5px 2px 5px;
+  	border-radius: 12px;
+  	border-color: gray;
+  	width: 380px;
+  	color: white;
+  	background-color: gray;
+  	margin-left: 35%;
+  	text-align: center;
+	}
+	
+.row{
+	color: white;
+}
+.odd1{
+	background-color:#365a7a;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.odd2{
+	background-color:#1d456a;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.odd3{
+	background-color:#365a7a;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.even1{
+	background-color:#365a7a;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.even2{
+	background-color:#04315a;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.even3{
+	background-color:#1d456a;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.column{
+	border-style: solid;
+	border-color: white;
+	border-width: 2px 5px;
+}
+
+#teams {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 30%;
+  margin-left: 35%;
+}
+
+#teams td, #teams th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#teams tr:nth-child(even){background-color: #f2f2f2;}
+
+#teams th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04315a;
+  color: white;
+}

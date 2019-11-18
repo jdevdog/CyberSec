@@ -1,0 +1,63 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+
+#navi{
+  	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #04315a;
+	width: 100%;
+}
+
+.link{
+	color: white;
+	font-size: 24px;
+	padding-left: 15%;
+}
+
+#scoreboard{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: lightgray;
+	width: 100%;
+}
+
+#teams {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 30%;
+  margin-left: 35%;
+}
+
+#teams td, #teams th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#teams tr:nth-child(even){background-color: #f2f2f2;}
+
+#teams th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04315a;
+  color: white;
+}
+
+p{
+	font-size: 24px;
+}
+
+#score{
+	border-style: solid;
+  	border-width: 2px 5px 2px 5px;
+  	border-radius: 12px;
+  	border-color: gray;
+  	width: 380px;
+  	color: white;
+  	background-color: gray;
+  	margin-left: 35%;
+  	text-align: center;
+	}

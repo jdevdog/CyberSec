@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	<title>Welcome Team1</title>
+	<link rel="stylesheet" href="admin.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	</head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<body>
+		<div id="navi">
+	<a class="link" href="index.html">Home</a><a class="link" href="CTFScore.html">Score</a><a class="link" href="CTFQuestions.html">Questions</a><a class="link" href="CTFAdmin.html">Admin</a>
+	</div>
+	<div id = "header">
+		<h1 id = "welcome">Welcome, Admin</h1>
+	</div>
+	<h2>Schedule a CTF Event</h2>
+	<input id="scheduler" type="text" name="datetimes" />
+	<input id= "btn" type="button" value="Submit"  onclick="javascript:validate()">
+	<h1 id="CTF"></h1>
+<script type="text/javascript">
+function validate()
+{
+    document.getElementById("CTF").innerHTML = "Capture the Flag: " + document.getElementById("scheduler").value;
+}
+</script>
+	<h2>Invite <input type="text"  id="email" placeholder="Emails"> as <input type="text"  id="team" placeholder="Team Name">
+	<input id="btn" type="button" value="Invite"  onclick="javascript:invites()"></h2>
+
+
+
+<table id="teams">
+<tr><th>Team</th><th>Emails</th></tr>
+<tr><td id="Team1">Starstrucks</td><td id="emails1">jvalentine@gmail.com; <br>credfield@gmail.com</td></tr>
+<tr><td id="Team2">Rareware</td><td id="emails2">kameo@gmail.com; <br>dkong@gmail.com; <br>ylaylee@gmail.com</td></tr>
+<tr><td id="Team3"></td><td id="emails3"></td></tr>
+</table>
+<script type="text/javascript">
+function invites()
+{
+    document.getElementById("Team3").innerHTML = document.getElementById("team").value;
+    document.getElementById("emails3").innerHTML = document.getElementById("email").value;
+}
+</script>
+<script>
+$(function() {
+  $('input[name="datetimes"]').daterangepicker({
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    endDate: moment().startOf('hour').add(32, 'hour'),
+    locale: {
+      format: 'M/DD hh:mm A'
+    }
+  });
+});
+</script>
+	</body>
+</html>
