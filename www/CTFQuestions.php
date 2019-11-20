@@ -80,6 +80,14 @@
 	</div>
 		<br>
 		<?php
+		include "credentials.php";
+	
+				// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $dbname);
+				// Check connection
+			if ($conn-> connect_error) {
+		    	die("Connection failed: " . $conn-> connect_error);
+			}
 			echo "<div id=\""."HeartBleedM"."\" class=\"modal\">";
 			echo "<div class=\"modal-content\">";
     		echo "<span class=\"close\">&times;</span>";
@@ -89,6 +97,9 @@
     		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     		echo "</div>";
     		echo "</div>";
+    		
+    		//close connection
+			$conn-> close();
 ?>
 <!-- The Modal -->
 <div id="myModal" class="modal">
