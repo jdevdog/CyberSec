@@ -80,7 +80,37 @@
 	</div>
 		<br>
 
-<!-- The Modal -->
+<?php
+include "credentials.php";
+	
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn-> connect_error) {
+		die("Connection failed: " . $conn-> connect_error);
+	}
+				
+	//fetching all teams and looping through the rows
+	$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+	$result = mysqli_query($conn, $sql);  		
+	$rowCount = 0;	
+	$countID = 0;
+	if ($result-> num_rows > 0) {
+		while($row = $result-> fetch_assoc()) {
+			echo "<div id=\"".$counter."\" class=\"modal\">"
+  			//<!-- Modal content -->
+			echo "<div class=\"modal-content\">"
+    		echo "<span class=\"close\">&times;</span>"
+    		echo "<p id=\"modalq\">".$row["text"]."</p>"
+    		echo "<p id=\"tries\">".$row["max_attempts"]."</p>"
+    		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">"
+    		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">"
+    		echo "</div>"
+    		++$counter;
+    	}
+    }
+?>
+<!-- The Modal 
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -90,7 +120,7 @@
     <p id="tries"></p>
     <input type="text" id="answer" placeholder="Answer">
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
-  </div>
+  </div> -->
 <script type="text/javascript">
 function validate()
 {
@@ -124,12 +154,12 @@ function validate()
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
-function showQ(currentText)
+function showQ(currentID)
 {
 /* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
-document.getElementById("modalq").innerHTML = 
-var modal = document.getElementById("myModal");
+
+var modal = document.getElementById(currentID);
 
 // Get the button that opens the modal
 var btn = document.getElementById(currentID);
@@ -173,6 +203,7 @@ window.onclick = function(event) {
 				$sql = "SELECT title, text, points, answer FROM questions order by points";
 				$result = mysqli_query($conn, $sql);  		
 				$rowCount = 0;	
+				$countID = 0;
 				if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
 						if ($rowCount == 0){
@@ -181,7 +212,8 @@ window.onclick = function(event) {
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(\'".$row["text"]."\')\">Open Question</button>";
+						echo "<button class=\"qbtn\" id=\"".$countID."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
+						++$countID;
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
