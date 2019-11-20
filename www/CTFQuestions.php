@@ -79,19 +79,7 @@
 		<h1 id = "score">Current Score: 150</h1>
 	</div>
 		<br>
-		<?php
-			echo "<div id=\""."Heartbleed"."\" class=\"modal\">";
-			echo "<div class=\"modal-content\">";
-    		echo "<span class=\"close\">&times;</span>";
-    		echo "<p id=\"modalq\">"."This is some stuff"."</p>";
-    		echo "<p id=\"tries\">"."3"."</p>";
-    		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
-    		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
-    		echo "</div>";
-    	}
-    }
-    echo "<h2 id=\"q1\">Questions</h2>"
-?>
+
 <!--
 <!-- The Modal -->
 <div id="myModal" class="modal">
