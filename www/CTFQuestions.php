@@ -88,7 +88,7 @@
 			if ($conn-> connect_error) {
 		    	die("Connection failed: " . $conn-> connect_error);
 			}
-			$sql = "SELECT title, text, points, answer FROM questions order by points";
+			$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
 			$result = mysqli_query($conn, $sql);  
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
@@ -96,7 +96,7 @@
 						echo "<div class=\"modal-content\">";
     					echo "<span class=\"close\">&times;</span>";
     					echo "<p id=\"modalq\">".$row["text"]."</p>";
-    					echo "<p id=\"tries\">"."Attempts Left: 3"."</p>";
+    					echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
     					echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     					echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     					echo "</div>";
