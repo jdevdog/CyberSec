@@ -122,12 +122,14 @@ function validate()
     
     }
 </script>
+<!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
-function showQ()
+function showQ(currentID)
 {
-	alert(this.id);
+	alert(currentID);
 }
 </script>
+<!--end of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 </div>
 			<h2 id="q1">Questions</h2>
 			<?php
@@ -152,7 +154,7 @@ function showQ()
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"".row["title"]."\" onclick=\"javascript:showQ()\">Open Question</button>";
+						echo "<button class=\"qbtn\" id=\"".row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
