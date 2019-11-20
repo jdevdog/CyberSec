@@ -79,7 +79,35 @@
 		<h1 id = "score">Current Score: 150</h1>
 	</div>
 		<br>
-
+		<?php
+include "credentials.php";
+	
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn-> connect_error) {
+		die("Connection failed: " . $conn-> connect_error);
+	}
+				
+	//fetching all teams and looping through the rows
+	$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+	$result = mysqli_query($conn, $sql);  		
+	if ($result-> num_rows > 0) {
+		while($row = $result-> fetch_assoc()) {
+			echo "<div id=\"".$row["title"]."\" class=\"modal\">";
+  			//<!-- Modal content -->
+			echo "<div class=\"modal-content\">";
+    		echo "<span class=\"close\">&times;</span>";
+    		echo "<p id=\"modalq\">".$row["text"]."</p>";
+    		echo "<p id=\"tries\">".$row["max_attempts"]."</p>";
+    		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
+    		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
+    		echo "</div>"
+    	}
+    }
+    $conn-> close();
+?>
+<!--
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -90,7 +118,7 @@
     <p id="tries"></p>
     <input type="text" id="answer" placeholder="Answer">
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
-  </div>
+  </div> -->
 <script type="text/javascript">
 function validate()
 {
