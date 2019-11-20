@@ -102,7 +102,6 @@ include "credentials.php";
     		echo "</div>";
     	}
     }
-    $conn-> close();
 ?>
 <!--
 <!-- The Modal -->
