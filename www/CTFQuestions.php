@@ -80,7 +80,7 @@
 	</div>
 		<br>
 
-<?php
+<!--<?php
 include "credentials.php";
 	
 	// Create connection
@@ -110,7 +110,7 @@ include "credentials.php";
     	}
     }
     $conn-> close();
-?>
+?> -->
 <!-- The Modal 
 <div id="myModal" class="modal">
 
