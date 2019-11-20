@@ -84,7 +84,7 @@
 			echo "<div class=\"modal-content\">";
     		echo "<span class=\"close\">&times;</span>";
     		echo "<p id=\"modalq\">"."This is some stuff"."</p>";
-    		echo "<p id=\"tries\">"."3"."</p>";
+    		echo "<p id=\"tries\">"."Attempts Left: 3"."</p>";
     		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     		echo "</div>";
@@ -139,7 +139,7 @@ function showQ(currentID)
 /* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
 
-var modal = document.getElementById("HeartbleedM");
+var modal = document.getElementById(currentID + "M");
 
 // Get the button that opens the modal
 var btn = document.getElementById(currentID);
