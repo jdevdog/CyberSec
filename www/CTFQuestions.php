@@ -95,7 +95,7 @@
 						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
 						echo "<div class=\"modal-content\">";
     					echo "<span class=\"close\">&times;</span>";
-    					echo "<p id=\"modalq\">"."This is some stuff"."</p>";
+    					echo "<p id=\"modalq\">".$row["text"]."</p>";
     					echo "<p id=\"tries\">"."Attempts Left: 3"."</p>";
     					echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     					echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
@@ -159,7 +159,6 @@ var modal = document.getElementById(currentID + "M");
 
 // Get the button that opens the modal
 var btn = document.getElementById(currentID);
-document.getElementById("modalq").innerHTML = currentID;
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
