@@ -79,7 +79,8 @@
 		<h1 id = "score">Current Score: 150</h1>
 	</div>
 		<br>
-<!--		<?php
+<!-- 
+<?php
 include "credentials.php";
 	
 	// Create connection
@@ -109,7 +110,6 @@ include "credentials.php";
     }
     $conn-> close();
 ?> -->
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -120,7 +120,7 @@ include "credentials.php";
     <p id="tries"></p>
     <input type="text" id="answer" placeholder="Answer">
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
-  </div> 
+  </div>
 <script type="text/javascript">
 function validate()
 {
