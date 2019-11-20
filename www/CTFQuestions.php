@@ -80,7 +80,7 @@
 	</div>
 		<br>
 		<?php
-			echo "<div id=\""."HeartbleedM"."\" class=\"modal\">";
+			echo "<div id=\""."HeartBleedM"."\" class=\"modal\">";
 			echo "<div class=\"modal-content\">";
     		echo "<span class=\"close\">&times;</span>";
     		echo "<p id=\"modalq\">"."This is some stuff"."</p>";
