@@ -124,38 +124,11 @@ function validate()
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
-function showQ(currentID)
+function showQ(currentText)
 {
-<?php
-	include "credentials.php";
-	
-				// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-				// Check connection
-	if ($conn-> connect_error) {
-		    die("Connection failed: " . $conn-> connect_error);
-	}
-				
-				//fetching all teams and looping through the rows
-	$sql = "SELECT text FROM questions order by points where title = HeartBleed";
-				$result = mysqli_query($conn, $sql);  		
-				
-				if ($result-> num_rows > 0) {
-					while($row = $result-> fetch_assoc()) {
-						$currentText = $row["text"];
-				}
-				}
-				else {
-					$currentText = "No Questions Available";
-				}
-				
-						
-		//close connection
-		$conn-> close();
-	?>	
 /* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
-document.getElementById("modalq").innerHTML = <?php $currentText ?>;
+document.getElementById("modalq").innerHTML = 
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -208,7 +181,7 @@ window.onclick = function(event) {
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
+						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(".$row["text"].")\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
