@@ -139,9 +139,9 @@ var span = document.getElementsByClassName("close")[0];
 document.getElementById("modalq").innerHTML = currentText;
 document.getElementById("tries").innerHTML = currentAttempt;
 // When the user clicks the button, open the modal 
-
-modal.style.display = "block";
-
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -171,7 +171,7 @@ window.onclick = function(event) {
 				}
 				
 				//fetching all teams and looping through the rows
-				$sql = "SELECT title, text, points, answer FROM questions order by points";
+				$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
 				$result = mysqli_query($conn, $sql);  		
 				$rowCount = 0;	
 				if ($result-> num_rows > 0) {
