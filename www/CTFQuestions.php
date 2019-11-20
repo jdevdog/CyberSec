@@ -88,8 +88,6 @@
     		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     		echo "</div>";
-    	}
-    }
 ?>
 <!-- The Modal -->
 <div id="myModal" class="modal">
