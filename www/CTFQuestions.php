@@ -90,7 +90,7 @@ include "credentials.php";
 	}
 				
 	//fetching all teams and looping through the rows
-	$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+	$sql = "SELECT title, text, points, answer FROM questions order by points";
 	$result = mysqli_query($conn, $sql);  		
 	if ($result-> num_rows > 0) {
 		while($row = $result-> fetch_assoc()) {
@@ -99,7 +99,7 @@ include "credentials.php";
 			echo "<div class=\"modal-content\">";
     		echo "<span class=\"close\">&times;</span>";
     		echo "<p id=\"modalq\">".$row["text"]."</p>";
-    		echo "<p id=\"tries\">".$row["max_attempts"]."</p>";
+    		echo "<p id=\"tries\"></p>";
     		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     		echo "</div>"
