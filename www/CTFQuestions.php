@@ -79,7 +79,7 @@
 		<h1 id = "score">Current Score: 150</h1>
 	</div>
 		<br>
-<?php
+		<?php
 include "credentials.php";
 	
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -88,7 +88,7 @@ include "credentials.php";
 	}
 				
 	//fetching all teams and looping through the rows
-	$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+	$sql = "SELECT title, text, points, answer FROM questions order by points";
 	$result = mysqli_query($conn, $sql);  		
 	if ($result-> num_rows > 0) {
 		while($row = $result-> fetch_assoc()) {
@@ -99,7 +99,7 @@ include "credentials.php";
     		echo "<p id=\"tries\">".$row["max_attempts"]."</p>";
     		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
-    		echo "</div>"
+    		echo "</div>";
     	}
     }
     $conn-> close();
@@ -115,8 +115,7 @@ include "credentials.php";
     <p id="tries"></p>
     <input type="text" id="answer" placeholder="Answer">
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
-  </div>
-  -->
+  </div>-->
 <script type="text/javascript">
 function validate()
 {
@@ -183,7 +182,6 @@ window.onclick = function(event) {
 }
 </script>
 <!--end of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
-</div>
 			<h2 id="q1">Questions</h2>
 			<?php
 				include "credentials.php";
