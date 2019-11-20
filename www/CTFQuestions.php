@@ -153,8 +153,8 @@ function showQ(currentID)
 						} 
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
-						echo "<h2>".$row["title"]." (".row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"".row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
+						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
+						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
