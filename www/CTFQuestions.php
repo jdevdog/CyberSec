@@ -97,14 +97,14 @@ include "credentials.php";
 	$countID = 0;
 	if ($result-> num_rows > 0) {
 		while($row = $result-> fetch_assoc()) {
-			echo "<div id=\"".$counter."\" class=\"modal\">"
+			echo "<div id=\"".$counter."\" class=\"modal\">";
   			//<!-- Modal content -->
-			echo "<div class=\"modal-content\">"
-    		echo "<span class=\"close\">&times;</span>"
-    		echo "<p id=\"modalq\">".$row["text"]."</p>"
-    		echo "<p id=\"tries\">".$row["max_attempts"]."</p>"
-    		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">"
-    		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">"
+			echo "<div class=\"modal-content\">";
+    		echo "<span class=\"close\">&times;</span>";
+    		echo "<p id=\"modalq\">".$row["text"]."</p>";
+    		echo "<p id=\"tries\">".$row["max_attempts"]."</p>";
+    		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
+    		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     		echo "</div>"
     		++$counter;
     	}
