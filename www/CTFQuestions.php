@@ -139,10 +139,10 @@ function showQ(currentID)
 /* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
 
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("HeartbleedM");
 
 // Get the button that opens the modal
-var btn = document.getElementById("HeartbleedM");
+var btn = document.getElementById(currentID);
 document.getElementById("modalq").innerHTML = currentID;
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
