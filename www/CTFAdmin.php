@@ -30,7 +30,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<body>
 		<div id="navi">
-	<a class="link" href="index.php">Home</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
+	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
 	</div>
 	<div id = "header">
 		<h1 id = "welcome">Welcome, Admin</h1>
@@ -53,10 +53,31 @@ function validate()
 
 
 <table id="teams">
-<tr><th>Team</th><th>Emails</th></tr>
-<tr><td id="Team1">Starstrucks</td><td id="emails1">jvalentine@gmail.com; <br>credfield@gmail.com</td></tr>
-<tr><td id="Team2">Rareware</td><td id="emails2">kameo@gmail.com; <br>dkong@gmail.com; <br>ylaylee@gmail.com</td></tr>
-<tr><td id="Team3"></td><td id="emails3"></td></tr>
+<tr><th>Team</th><th></th>Scores</tr>
+<?php
+		include "credentials.php";
+		// Create connection
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn-> connect_error) {
+		    die("Connection failed: " . $conn-> connect_error);
+		}
+				
+		//fetching all teams and looping through the rows
+		$sql = "SELECT score, name FROM teams order by score";
+		$result = mysqli_query($conn, $sql);  							//$conn-> query($sql);
+		if ($result-> num_rows > 0) {
+			while($row = $result-> fetch_assoc()) {
+				echo "<tr><td>".$row["name"]."</td><td>".$row["score"]."</td></tr>";
+			}
+		}
+		else {
+			echo "<h1>No Teams Available<h1>";
+		}
+		
+		//close connection
+		$conn-> close();
+	?>
 </table>
 
 <script>

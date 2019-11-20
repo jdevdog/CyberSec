@@ -86,8 +86,8 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>What was the original name of Wireshark</p>
-    <p id="tries">Attempts Left: 2</p>
+    <p id="modalq"></p>
+    <p id="tries"></p>
     <input type="text" id="answer" placeholder="Answer">
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
   </div>
@@ -122,6 +122,12 @@ function validate()
     
     }
 </script>
+<script type="text/javascript">
+function showQ()
+{
+	alert(this.id);
+}
+</script>
 </div>
 			<h2 id="q1">Questions</h2>
 			<?php
@@ -146,7 +152,7 @@ function validate()
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"myBtn\">Open Question</button>";
+						echo "<button class=\"qbtn\" id=\"".row["title"]."\" onclick=\"javascript:showQ()\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
