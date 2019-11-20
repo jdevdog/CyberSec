@@ -136,8 +136,8 @@ var btn = document.getElementById(currentID);
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-document.getElementById("modalq").innerHTML = currentText;
-document.getElementById("tries").innerHTML = currentAttempt;
+//document.getElementById("modalq").innerHTML = currentText;
+//document.getElementById("tries").innerHTML = currentAttempt;
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
