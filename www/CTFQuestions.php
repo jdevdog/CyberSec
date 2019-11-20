@@ -92,7 +92,7 @@
 			$result = mysqli_query($conn, $sql);  
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
-						echo "<div id=\""."HeartBleedM"."\" class=\"modal\">";
+						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
 						echo "<div class=\"modal-content\">";
     					echo "<span class=\"close\">&times;</span>";
     					echo "<p id=\"modalq\">"."This is some stuff"."</p>";
