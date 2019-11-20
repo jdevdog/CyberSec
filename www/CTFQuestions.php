@@ -124,11 +124,11 @@ function validate()
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
-function showQ(currentText)
+function showQ(currentID)
 {
 /* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
-document.getElementById("modalq").innerHTML = 
+
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
