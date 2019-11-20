@@ -180,8 +180,7 @@ window.onclick = function(event) {
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
-						$descr = $row["text"];
-						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id, ".$descr.")\">Open Question</button>";
+						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id, ".$row["title"].")\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
