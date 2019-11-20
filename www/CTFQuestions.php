@@ -183,14 +183,14 @@ window.onclick = function(event) {
 <!--end of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 			<h2 id="q1">Questions</h2>
 			<?php
-				include "credentials.php";
+				//include "credentials.php";
 	
 				// Create connection
-				$conn = mysqli_connect($servername, $username, $password, $dbname);
+				//$conn = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
-				if ($conn-> connect_error) {
-		    		die("Connection failed: " . $conn-> connect_error);
-				}
+				//if ($conn-> connect_error) {
+		    	//	die("Connection failed: " . $conn-> connect_error);
+				//}
 				
 				//fetching all teams and looping through the rows
 				$sql = "SELECT title, text, points, answer FROM questions order by points";
