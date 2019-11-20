@@ -88,6 +88,9 @@
 			if ($conn-> connect_error) {
 		    	die("Connection failed: " . $conn-> connect_error);
 			}
+			$sql = "SELECT title, text, points, answer FROM questions order by points";
+			$result = mysqli_query($conn, $sql);  
+			
 			echo "<div id=\""."HeartBleedM"."\" class=\"modal\">";
 			echo "<div class=\"modal-content\">";
     		echo "<span class=\"close\">&times;</span>";
