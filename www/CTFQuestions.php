@@ -93,7 +93,6 @@ include "credentials.php";
 	//fetching all teams and looping through the rows
 	$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
 	$result = mysqli_query($conn, $sql);  		
-	$rowCount = 0;	
 	$countID = 0;
 	if ($result-> num_rows > 0) {
 		while($row = $result-> fetch_assoc()) {
@@ -204,7 +203,6 @@ window.onclick = function(event) {
 				$sql = "SELECT title, text, points, answer FROM questions order by points";
 				$result = mysqli_query($conn, $sql);  		
 				$rowCount = 0;	
-				$countID = 0;
 				if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
 						if ($rowCount == 0){
@@ -213,8 +211,7 @@ window.onclick = function(event) {
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"".$countID."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
-						++$countID;
+						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
