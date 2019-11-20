@@ -79,7 +79,19 @@
 		<h1 id = "score">Current Score: 150</h1>
 	</div>
 		<br>
-
+		<?php
+			echo "<div id=\""."Heartbleed"."\" class=\"modal\">";
+			echo "<div class=\"modal-content\">";
+    		echo "<span class=\"close\">&times;</span>";
+    		echo "<p id=\"modalq\">"."This is some stuff"."</p>";
+    		echo "<p id=\"tries\">"."3"."</p>";
+    		echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
+    		echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
+    		echo "</div>";
+    	}
+    }
+    echo "<h2 id=\"q1\">Questions</h2>"
+?>
 <!--
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -170,7 +182,7 @@ window.onclick = function(event) {
 				//}
 				
 				//fetching all teams and looping through the rows
-				$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+				$sql = "SELECT title, text, points, answer FROM questions order by points";
 				$result = mysqli_query($conn, $sql);  		
 				$rowCount = 0;	
 				if ($result-> num_rows > 0) {
@@ -183,14 +195,6 @@ window.onclick = function(event) {
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
 						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
 						echo "</div>";
-						echo "<div id=\"".$row["title"]."\" class=\"modal\">";
-						echo "<div class=\"modal-content\">";
-    					echo "<span class=\"close\">&times;</span>";
-    					echo "<p id=\"modalq\">".$row["text"]."</p>";
-    					echo "<p id=\"tries\">".$row["max_attempts"]."</p>";
-    					echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
-    					echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
-    					echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
 							$rowCount = 0;
