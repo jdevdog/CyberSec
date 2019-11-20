@@ -109,6 +109,7 @@ include "credentials.php";
     		++$counter;
     	}
     }
+    $conn-> close();
 ?>
 <!-- The Modal 
 <div id="myModal" class="modal">
