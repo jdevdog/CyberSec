@@ -124,9 +124,8 @@ function validate()
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
-function showQ(currentID)//, currentAnswer, currentPoints, currentText, currentAttempt)
+function showQ(currentID)
 {
-	//alert(currentID);
 /* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -136,8 +135,7 @@ var btn = document.getElementById(currentID);
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-document.getElementById("modalq").innerHTML = currentText;
-document.getElementById("tries").innerHTML = currentAttempt;
+
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
@@ -171,7 +169,7 @@ window.onclick = function(event) {
 				}
 				
 				//fetching all teams and looping through the rows
-				$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+				$sql = "SELECT title, text, points, answer FROM questions order by points";
 				$result = mysqli_query($conn, $sql);  		
 				$rowCount = 0;	
 				if ($result-> num_rows > 0) {
@@ -182,8 +180,7 @@ window.onclick = function(event) {
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
-						//echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id,".$row["answer"].", ".$row["points"].", ".$row["text"].", ".$row["max_attempts"].")\">Open Question</button>";
-						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";				
+						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
 						echo "</div>";
 						if ($rowCount == 3){
 							echo "</div>";
