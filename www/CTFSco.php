@@ -1,4 +1,7 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<?php
+$session_start();
+ ?>
 <html>
 	<head>
 	<title>Welcome Team1</title>
@@ -86,7 +89,7 @@
 		if ($conn-> connect_error) {
 		    die("Connection failed: " . $conn-> connect_error);
 		}
-				
+
 		//fetching all teams and looping through the rows
 		$sql = "SELECT score, name FROM teams order by score";
 		$result = mysqli_query($conn, $sql);  							//$conn-> query($sql);
@@ -98,14 +101,14 @@
 		else {
 			echo "<h1>No Teams Available<h1>";
 		}
-		
+
 		//close connection
 		$conn-> close();
 	?>
 	</table>
 		<br>
 
-	
+
 
 
 	</body>

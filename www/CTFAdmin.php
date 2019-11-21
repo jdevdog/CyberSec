@@ -1,4 +1,8 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<?php
+$session_start();
+
+ ?>
 <html>
 	<head>
 	<title>Welcome Team1</title>
@@ -11,7 +15,7 @@
         if ($conn-> connect_error) {
                 die("Connection failed: " . $conn-> connect_error);
         }
-		
+
         	if(isset($_POST['Invite'])) {
             	$myteam = mysqli_real_escape_string($conn, $_POST['team']);
             	$sql = "SELECT name FROM teams";
@@ -20,7 +24,7 @@
 				$sql = "INSERT INTO 'teams' ('team_id', 'score', 'name', 'password') VALUES (6, 0, 'test', 'password'";
 				mysqli_query($conn, $sql);
 				}
-		
+
 ?>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -62,7 +66,7 @@ function validate()
 		if ($conn-> connect_error) {
 		    die("Connection failed: " . $conn-> connect_error);
 		}
-				
+
 		//fetching all teams and looping through the rows
 		$sql = "SELECT score, name FROM teams order by score";
 		$result = mysqli_query($conn, $sql);  							//$conn-> query($sql);
@@ -74,7 +78,7 @@ function validate()
 		else {
 			echo "<h1>No Teams Available<h1>";
 		}
-		
+
 		//close connection
 		$conn-> close();
 	?>

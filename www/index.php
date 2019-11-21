@@ -16,13 +16,13 @@
 			if ($con-> connect_error) {
 				die("Connection failed: " . $con-> connect_error);
 			}
-			$stmt = $con->prepare("SELECT * FROM users WHERE username = ?");
+			$stmt = $con->prepare("SELECT * FROM teams WHERE name = ?");
 			$stmt->bind_param('s', $_POST['username']);
 			$result = $stmt->get_result();
 			$user = $result->fetch_object();
 
 			if( password_verify( $_POST['password'], $user->password ) ) {
-				$_SESSION(['user_id'] = $user->ID;
+				$_SESSION(['user_id'] = $user->team_id;
 			}
 		}
 	}

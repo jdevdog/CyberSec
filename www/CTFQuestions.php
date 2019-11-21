@@ -1,4 +1,11 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<?php
+	$session_start();
+
+	if(isset($_SESSION['user_id'])) {
+		echo "user id set. user is " . $_SESSION['user_id'];
+	}
+?>
 <html>
 	<head>
 	<title>Welcome Team1</title>
@@ -81,7 +88,7 @@
 		<br>
 		<?php
 		include "credentials.php";
-	
+
 				// Create connection
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
@@ -89,7 +96,7 @@
 		    	die("Connection failed: " . $conn-> connect_error);
 			}
 			$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
-			$result = mysqli_query($conn, $sql);  
+			$result = mysqli_query($conn, $sql);
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
 						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
@@ -126,26 +133,26 @@ function validate()
         document.getElementById("first").innerHTML = "<b>Team1: 200</b>"
         document.getElementById("second").innerHTML = "Team3: 190"
         document.getElementById("score").innerHTML = "Current Score: 200"
-        document.getElementById("myBtn").disabled = true; 
-        document.getElementById("myBtn").innerHTML = "Completed"; 
+        document.getElementById("myBtn").disabled = true;
+        document.getElementById("myBtn").innerHTML = "Completed";
         modal.style.display = "none";
     }
     else{
     	alert( "Wrong answer" );
     	if( document.getElementById("tries").innerHTML == "2" ){
-    	document.getElementById("tries").innerHTML = "1"; 
+    	document.getElementById("tries").innerHTML = "1";
     	}
     	else{
     	if( document.getElementById("tries").innerHTML == "1" ){
-    	document.getElementById("tries").innerHTML = "0"; 
-    	document.getElementById("myBtn").disabled = true; 
-        document.getElementById("myBtn").innerHTML = "Exceeded Attempts"; 
+    	document.getElementById("tries").innerHTML = "0";
+    	document.getElementById("myBtn").disabled = true;
+        document.getElementById("myBtn").innerHTML = "Exceeded Attempts";
         modal.style.display = "none";
     	}
     	}
-    	
+
     }
-    
+
     }
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
@@ -162,7 +169,7 @@ var btn = document.getElementById(currentID);
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 
 modal.style.display = "block";
 
@@ -186,29 +193,29 @@ window.onclick = function(event) {
 			<h2 id="q1">Questions</h2>
 			<?php
 				include "credentials.php";
-	
+
 				// Create connection
 				$conn = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
 				if ($conn-> connect_error) {
 		    		die("Connection failed: " . $conn-> connect_error);
 				}
-				
+
 				//fetching all teams and looping through the rows
 				$sql = "SELECT title, text, points, answer FROM questions order by points";
-				$result = mysqli_query($conn, $sql);  		
-				$rowCount = 0;	
+				$result = mysqli_query($conn, $sql);
+				$rowCount = 0;
 				if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
 						if ($rowCount == 0){
 							echo "<div class=\"row\">";
-						} 
+						}
 						++$rowCount;
 						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
 						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
 						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
 						echo "</div>";
-						
+
 						if ($rowCount == 3){
 							echo "</div>";
 							$rowCount = 0;
@@ -218,10 +225,10 @@ window.onclick = function(event) {
 				else {
 					echo "<h1>No Questions Available<h1>";
 				}
-		
+
 		//close connection
 		$conn-> close();
-	?>	
+	?>
 
 <!--
 			<div class="row">
