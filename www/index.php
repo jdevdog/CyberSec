@@ -1,4 +1,47 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<?php
+		// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+		// Check connection
+	if ($conn-> connect_error) {
+		die("Connection failed: " . $conn-> connect_error);
+	}
+
+	$session_start();
+
+	if (!empty ( $_POST )) {
+		if(isset( $_POST(['username']) && isset([$_POST['password']) ) {
+			$con = new mysqli($servername, $username, $password, $dbname);
+				// Check connection
+			if ($con-> connect_error) {
+				die("Connection failed: " . $con-> connect_error);
+			}
+			$stmt = $con->prepare("SELECT * FROM users WHERE username = ?");
+			$stmt->bind_param('s', $_POST['username']);
+			$result = $stmt->get_result();
+			$user = $result->fetch_object();
+
+			if( password_verify( $_POST['password'], $user->password ) ) {
+				$_SESSION(['user_id'] = $user->ID;
+			}
+		}
+	}
+
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            $myusername = mysqli_real_escape_string($conn, $_POST['username']);
+            $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
+            $sql = "SELECT name FROM teams WHERE name = '$myusername' AND password = '$mypassword'";
+						$result = mysqli_query($conn, $sql);
+            $count = mysqli_num_rows($result);
+            if($count == 1) {
+                    header("location: CTFQuestions.php");
+            } else {
+                    $error = "Your login name or password is invalid";
+            }
+    }
+?>
+
 <html>
 	<head>
 	<title>Capture the Flag</title>
@@ -19,26 +62,6 @@
 			<form action="./CTFQuestions.html">
 				<input type="submit" value="Continue as Guest" id="btn2">
 			</form>
-<?php
-		// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-		// Check connection
-	if ($conn-> connect_error) {
-		die("Connection failed: " . $conn-> connect_error);
-	}  			
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $myusername = mysqli_real_escape_string($conn, $_POST['username']);
-            $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
-            $sql = "SELECT name FROM teams WHERE name = '$myusername' AND password = '$mypassword'";
-			$result = mysqli_query($conn, $sql);
-            $count = mysqli_num_rows($result);
-            if($count == 1) {
-                    header("location: CTFQuestions.php");
-            } else {
-                    $error = "Your login name or password is invalid";
-            }
-    }
-?>
 			<br>
 			<br>
 			</div>
