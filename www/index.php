@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-
+	include 'credentials.php';
 	if (!empty($_POST))
 	{
 		if(isset($_POST['username']) && isset($_POST['password']))
@@ -13,17 +13,17 @@
 				die("Connection failed: " . $con-> connect_error);
 			}
 
-			echo $_POST['password'];
-			echo $_POST['username'];
 			$stmt = $con->prepare("SELECT * FROM teams WHERE name = ?");
 			$stmt->bind_param('s', $_POST['username']);
 			$result = $stmt->get_result();
 			$user = $result->fetch_object();
 
-			if($_POST['password'] == $user->password)
+			echo $user->team_id;
+			if(strcmp($_POST['password'], $user->password))
 			{
 				$_SESSION['user_id'] = $user->team_id;
 				header("location: CRFQuestions.php");
+				exit;
 			}
 			else
 			{
