@@ -22,7 +22,7 @@
 			if(strcmp($_POST['password'], $user->password))
 			{
 				$_SESSION['user_id'] = $user->team_id;
-				header("location: CRFQuestions.php");
+				header("location: http://35.226.71.244/CyberSec/www/CTFQuestions.php");
 				exit;
 			}
 			else
