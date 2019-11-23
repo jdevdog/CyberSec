@@ -13,6 +13,9 @@
 			{
 				die("Connection failed: " . $con-> connect_error);
 			}
+
+			echo $_POST['password'];
+			echo $_POST['username'];
 			$stmt = $con->prepare("SELECT * FROM teams WHERE name = ?");
 			$stmt->bind_param('s', $_POST['username']);
 			$result = $stmt->get_result();
@@ -44,9 +47,9 @@
 		<br><br><br><br>
 		<div id="login" style="padding-top: 20px; padding-left: 170px">
 			<form action="" method="post">
-				<input type="text" name="username" id="username" class="log" placeholder="Username"><br><br>
-				<input type="password" name="password" id="password" class="log" placeholder="Password"><br><br>
-				<input type="submit" value="Login" id="btn">
+				<input type="text" name="username" id="username" class="log" placeholder="Username" required><br><br>
+				<input type="password" name="password" id="password" class="log" placeholder="Password" required><br><br>
+				<input type="submit" value="Submit" id="btn">
 			</form>
 			<form action="./CTFQuestions.html">
 				<input type="submit" value="Continue as Guest" id="btn2">
