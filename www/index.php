@@ -13,16 +13,16 @@
 				die("Connection failed: " . $con-> connect_error);
 			}
 
-			$stmt = $con->prepare("SELECT * FROM teams WHERE name = ?");
+			$stmt = $con->prepare("SELECT * FROM teams WHERE name = ? ");
 			$stmt->bind_param('s', $_POST['username']);
+			$stmt->execute();
 			$result = $stmt->get_result();
 			$user = $result->fetch_object();
-
-			echo $user->team_id;
-			if(strcmp($_POST['password'], $user->password))
+			if($_POST['password'] == $user->password)
 			{
 				$_SESSION['user_id'] = $user->team_id;
-				header("location: http://35.226.71.244/CyberSec/www/CTFQuestions.php");
+				echo $_SESSION['user_id'];
+				header("location: CTFQuestions.php");
 				exit;
 			}
 			else
