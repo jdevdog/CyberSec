@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <?php
+	session_start();
 
-	$session_start();
-
-	if (!empty ( $_POST ))
+	if (!empty($_POST))
 	{
-		if(isset( $_POST(['username']) && isset([$_POST['password']) )
+		if(isset($_POST['username']) && isset($_POST['password']))
 		{
 			$con = new mysqli($servername, $username, $password, $dbname);
 				// Check connection
@@ -21,9 +20,9 @@
 			$result = $stmt->get_result();
 			$user = $result->fetch_object();
 
-			if( $_POST['password'] == $user->password ) )
+			if($_POST['password'] == $user->password)
 			{
-				$_SESSION(['user_id'] = $user->team_id;
+				$_SESSION['user_id'] = $user->team_id;
 				header("location: CRFQuestions.php");
 			}
 			else

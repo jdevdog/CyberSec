@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-	$session_start();
+	session_start();
 
 	if(isset($_SESSION['user_id'])) {
 		echo "user id set. user is " . $_SESSION['user_id'];
