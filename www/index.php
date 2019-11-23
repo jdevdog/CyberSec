@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <?php
-		// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-		// Check connection
-	if ($conn-> connect_error) {
-		die("Connection failed: " . $conn-> connect_error);
-	}
 
 	$session_start();
 
-	if (!empty ( $_POST )) {
-		if(isset( $_POST(['username']) && isset([$_POST['password']) ) {
+	if (!empty ( $_POST ))
+	{
+		if(isset( $_POST(['username']) && isset([$_POST['password']) )
+		{
 			$con = new mysqli($servername, $username, $password, $dbname);
 				// Check connection
-			if ($con-> connect_error) {
+			if ($con-> connect_error)
+			{
 				die("Connection failed: " . $con-> connect_error);
 			}
 			$stmt = $con->prepare("SELECT * FROM teams WHERE name = ?");
@@ -21,25 +18,17 @@
 			$result = $stmt->get_result();
 			$user = $result->fetch_object();
 
-			if( password_verify( $_POST['password'], $user->password ) ) {
+			if( $_POST['password'] == $user->password ) )
+			{
 				$_SESSION(['user_id'] = $user->team_id;
+				header("location: CRFQuestions.php");
+			}
+			else
+			{
+				$error = "Your login name or password is invalid";
 			}
 		}
 	}
-
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            $myusername = mysqli_real_escape_string($conn, $_POST['username']);
-            $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
-            $sql = "SELECT name FROM teams WHERE name = '$myusername' AND password = '$mypassword'";
-						$result = mysqli_query($conn, $sql);
-            $count = mysqli_num_rows($result);
-            if($count == 1) {
-                    header("location: CTFQuestions.php");
-            } else {
-                    $error = "Your login name or password is invalid";
-            }
-    }
 ?>
 
 <html>
