@@ -142,7 +142,7 @@
     		}
     		echo "<form action=\"\" method=\"post\">";
     		echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
-    		echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."\" placeholder=\"Answer\" name=\"das\"><br><br>";
+    		echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"das\"><br><br>";
     		echo "</form>";		
     		//close connection
 			$conn-> close();
