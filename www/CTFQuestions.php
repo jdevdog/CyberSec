@@ -132,7 +132,7 @@
     					echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
     					echo "<form action=\"\" method=\"post\">";
     					echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
-    					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"answer\"><br><br>";
+    					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."A"."\" placeholder=\"Answer\" name=\"answer\"><br><br>";
     					//echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     					//echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     					echo "</form>";
