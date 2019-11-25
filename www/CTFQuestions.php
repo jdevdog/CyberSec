@@ -149,9 +149,9 @@
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $myanswer = mysqli_real_escape_string($conn, $_POST['answer']);
         $sql = "SELECT title FROM questions WHERE answer = '$myanswer'";
-		$result = mysqli_query($connection, $sql);
+		$result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
-        if($count == 1) {
+        if($count > 1) {
             header("location: CTFSco.php");
         }
     }
