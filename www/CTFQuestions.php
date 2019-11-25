@@ -133,7 +133,8 @@
     					//echo "<form action=\"\" method=\"post\">";
     					//echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
     					//echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"answer\"><br><br>";
-    					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\"id=\"".$row["title"]."A"."\" placeholder=\"Answer\">";
+    					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."A"."\" placeholder=\"Answer\">";
+    					echo "<input type=\"hidden\" id=\"".$row["title"]."C"."\" value=".$row["answer"].">"
     					echo "<input type=\"button\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]."\"  onclick=\"javascript:validate(this.id)\">";
     					//echo "</form>";
     					echo "</div>";
@@ -170,7 +171,7 @@
 <script type="text/javascript">
 function validate(currentID)
 {
-    if(   document.getElementById(currentID + "A").value == "Ethereal" )
+    if(   document.getElementById(currentID + "A").value ==  document.getElementById(currentID + "C").value)
     {
         alert( "Correct!" );
 
