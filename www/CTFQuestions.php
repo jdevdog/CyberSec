@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-
+	include "credentials.php";
 	if(isset($_SESSION['user_id'])) {
 		echo "user id set. user is " . $_SESSION['user_id'];
 	}
+
+				// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $dbname);
+				// Check connection
+			if ($conn-> connect_error) {
+		    	die("Connection failed: " . $conn-> connect_error);
+			}
+			$teamID = $_SESSION['user_id'];
+			$sql = "SELECT score FROM teams where team_id =".$teamID;
+			$result = mysqli_query($conn, $sql);
+			if ($result-> num_rows > 0) {
+					while($row = $result-> fetch_assoc()) {
+							echo $row["score"];
+					}
+				}
+    		//close connection
+			$conn-> close();
+?>
 ?>
 <html>
 	<head>
