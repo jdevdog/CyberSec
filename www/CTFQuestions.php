@@ -151,7 +151,7 @@
     include "credentials.php";
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $myanswer = mysqli_real_escape_string($conn, $_POST['dass']);
+        $myanswer = mysqli_real_escape_string($conn, $_POST['das']);
         $sql = "SELECT title FROM questions";
 		$result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
