@@ -130,12 +130,12 @@
     					echo "<span class=\"close\">&times;</span>";
     					echo "<p id=\"modalq\">".$row["text"]."</p>";
     					echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
-    					echo "<form action=\"\" method=\"post\">";
-    					echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
-    					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."\" placeholder=\"Answer\" name=\"answer\"><br><br>";
-    					//echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
-    					//echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
-    					echo "</form>";
+    					//echo "<form action=\"\" method=\"post\">";
+    					//echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
+    					//echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."\" placeholder=\"Answer\" name=\"answer\"><br><br>";
+    					echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
+    					echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate(".$row["answer"].")\">";
+    					//echo "</form>";
     					echo "</div>";
     					echo "</div>";
     					}
@@ -144,26 +144,6 @@
 			$conn-> close();
 ?>
 
-<input type="text" style="width:30%;border-radius:12px;padding:14px;" placeholder="Answer" name="das">
-<input type="submit" value="Submit" id="btn">
-		
-<?php
-    include "credentials.php";
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $myanswer = mysqli_real_escape_string($conn, $_POST['das']);
-        $sql = "SELECT title FROM questions";
-		$result = mysqli_query($conn, $sql);
-        $count = mysqli_num_rows($result);
-        if($count > 1) {
-            echo "hi";
-        }
-        else{
-        	echo "hello";
-        }
-    }
-    $conn-> close();
-?>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -176,35 +156,18 @@
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
   </div>
 <script type="text/javascript">
-function validate()
+function validate(correctAnswer)
 {
-    if(   document.getElementById("answer").value == "Ethereal" )
+    if(   correctAnswer == "answer0" )
     {
         alert( "Correct!" );
-        document.getElementById("first").innerHTML = "<b>Team1: 200</b>"
-        document.getElementById("second").innerHTML = "Team3: 190"
-        document.getElementById("score").innerHTML = "Current Score: 200"
-        document.getElementById("myBtn").disabled = true;
-        document.getElementById("myBtn").innerHTML = "Completed";
-        modal.style.display = "none";
+
     }
     else{
     	alert( "Wrong answer" );
-    	if( document.getElementById("tries").innerHTML == "2" ){
-    	document.getElementById("tries").innerHTML = "1";
-    	}
-    	else{
-    	if( document.getElementById("tries").innerHTML == "1" ){
-    	document.getElementById("tries").innerHTML = "0";
-    	document.getElementById("myBtn").disabled = true;
-        document.getElementById("myBtn").innerHTML = "Exceeded Attempts";
-        modal.style.display = "none";
-    	}
-    	}
-
     }
 
-    }
+}
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
