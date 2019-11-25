@@ -151,7 +151,7 @@
         $sql = "SELECT title FROM questions WHERE answer = '$myanswer'";
 		$result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
-        if($count > 1) {
+        if($count == 1) {
             header("location: CTFSco.php");
         }
     }
