@@ -140,13 +140,13 @@
     					echo "</div>";
     					}
     		}
-    		echo "<form action=\"\" method=\"post\">";
-    		echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"das\"><br><br>";
-    		echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
-    		echo "</form>";		
     		//close connection
 			$conn-> close();
 ?>
+<form action="" method="post">
+<input type="text" style="width:30%;border-radius:12px;padding:14px;" placeholder="Answer" name="das">
+<input type="submit" value="Submit" id="btn">;
+</form>;		
 <?php
     include "credentials.php";
     $conn = mysqli_connect($servername, $username, $password, $dbname);
