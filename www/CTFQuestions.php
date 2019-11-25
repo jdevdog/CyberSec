@@ -155,7 +155,7 @@
             header("location: CTFSco.php");
         }
     }
-    conn-> close();
+    $conn-> close();
 ?>
 <!-- The Modal -->
 <div id="myModal" class="modal">
