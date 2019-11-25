@@ -130,7 +130,7 @@
     					echo "<span class=\"close\">&times;</span>";
     					echo "<p id=\"modalq\">".$row["text"]."</p>";
     					echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
-    					echo "<form action="" method=\"post\">";
+    					echo "<form action=\"\" method=\"post\">";
     					echo "<label>Answer:</label> <input type=\"text\" id=\"answer\" placeholder=\"Answer\" name=\"Answer\"><br><br>";
     					echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
     					//echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
