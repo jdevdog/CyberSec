@@ -23,7 +23,6 @@
     		//close connection
 			$conn-> close();
 ?>
-?>
 <html>
 	<head>
 	<title>Welcome Team1</title>
