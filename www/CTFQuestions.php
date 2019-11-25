@@ -133,8 +133,8 @@
     					echo "<form action=\"\" method=\"post\">";
     					echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
     					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"answer\"><br><br>";
-    					//echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
-    					//echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
+    					echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
+    					echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate(this.id)\">";
     					echo "</form>";
     					echo "</div>";
     					echo "</div>";
@@ -168,35 +168,18 @@
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
   </div>
 <script type="text/javascript">
-function validate()
+function validate(currentID)
 {
-    if(   document.getElementById("answer").value == "Ethereal" )
+    if(   document.getElementById(currentID).value == "Ethereal" )
     {
         alert( "Correct!" );
-        document.getElementById("first").innerHTML = "<b>Team1: 200</b>"
-        document.getElementById("second").innerHTML = "Team3: 190"
-        document.getElementById("score").innerHTML = "Current Score: 200"
-        document.getElementById("myBtn").disabled = true;
-        document.getElementById("myBtn").innerHTML = "Completed";
-        modal.style.display = "none";
+
     }
     else{
     	alert( "Wrong answer" );
-    	if( document.getElementById("tries").innerHTML == "2" ){
-    	document.getElementById("tries").innerHTML = "1";
-    	}
-    	else{
-    	if( document.getElementById("tries").innerHTML == "1" ){
-    	document.getElementById("tries").innerHTML = "0";
-    	document.getElementById("myBtn").disabled = true;
-        document.getElementById("myBtn").innerHTML = "Exceeded Attempts";
-        modal.style.display = "none";
-    	}
-    	}
-
     }
 
-    }
+}
 </script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
