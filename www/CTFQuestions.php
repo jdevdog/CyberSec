@@ -134,7 +134,7 @@
     					//echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
     					//echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"answer\"><br><br>";
     					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\"id=\"".$row["title"]."A"."\" placeholder=\"Answer\">";
-    					echo "<input type=\"button\" style=\"background-color:#872434;color:white;padding:36px20px;margin:8px0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]."\"  onclick=\"javascript:validate(this.id)\">";
+    					echo "<input type=\"button\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]."\"  onclick=\"javascript:validate(this.id)\">";
     					//echo "</form>";
     					echo "</div>";
     					echo "</div>";
