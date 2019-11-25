@@ -104,8 +104,6 @@
 					}
 				}
 			echo "</div>";
-			$message = "wrong answer";
-echo "<script type='text/javascript'>alert('$message');</script>";
     		//close connection
 			$conn-> close();
 			}
@@ -150,12 +148,11 @@ echo "<script type='text/javascript'>alert('$message');</script>";
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $myanswer = mysqli_real_escape_string($conn, $_POST['answer']);
-        $sql = "SELECT title FROM questions WHERE answer = \'answer0\'";
+        $sql = "SELECT title FROM questions WHERE answer = '$myanswer'";
 		$result = mysqli_query($connection, $sql);
         $count = mysqli_num_rows($result);
         if($count == 1) {
-            $message = "right answer";
-			echo $message;
+            header("location: CTFSco.php");
         }
     }
 ?>
