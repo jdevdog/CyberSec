@@ -1,14 +1,5 @@
 <!DOCTYPE html>
-<script type="text/javascript">
-$(document).keydown(function(e){
-    if(e.which === 123){
- 
-       return false;
- 
-    }
- 
-});
-</script>
+
 <?php
 	session_start();
 	include "credentials.php";
