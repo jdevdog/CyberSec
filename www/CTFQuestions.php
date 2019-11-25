@@ -25,7 +25,7 @@
 ?>
 <html>
 	<head>
-	<title>Welcome Team1</title>
+	<title>Welcome</title>
 	<link rel="stylesheet" href="Question.css">
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,17 +114,20 @@
 			$teamID = $_SESSION['user_id'];
 			$sql = "SELECT score FROM teams where team_id =".$teamID;
 			$result = mysqli_query($conn, $sql);
+			echo "<div id = \"scoreboard\">";
+			echo "<h1 id = \"score\">Current Score: ".$row["score"]."</h1>";
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
-							echo $row["score"];
+						echo "<h1 id = \"score\">Current Score: ".$row["score"]."</h1>";
 					}
 				}
+			echo "</div>";
     		//close connection
 			$conn-> close();
 ?>
-	<div id = "scoreboard">
+	<!--div id = "scoreboard">
 		<h1 id = "score">Current Score: 150</h1>
-	</div>
+	</div>-->
 		<br>
 		<?php
 		include "credentials.php";
