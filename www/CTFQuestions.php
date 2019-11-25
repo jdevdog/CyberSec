@@ -153,9 +153,6 @@
         $count = mysqli_num_rows($result);
         if($count == 1) {
             echo "YAH";
-        } else {
-            $error = "Your login name or password is invalid";
-            echo "$error";
         }
     }
 ?>
