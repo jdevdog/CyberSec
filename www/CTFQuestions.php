@@ -133,7 +133,7 @@
     					echo "<form action=\"\" method=\"post\">";
     					echo "<label>Answer:</label> <input type=\"text\" class=\"ans\" placeholder=\"Answer\" name=\"Answer\"><br><br>";
     					echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
-    					//echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
+    					echo "<input type=\"text\" id=\"answer\" placeholder=\"Answer\">";
     					//echo "<input type=\"button\" value=\"Submit\" id=\"btn\"  onclick=\"javascript:validate()\">";
     					echo "</form>";
     					echo "</div>";
