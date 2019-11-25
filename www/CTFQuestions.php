@@ -152,7 +152,7 @@
 		$result = mysqli_query($connection, $sql);
         $count = mysqli_num_rows($result);
         if($count == 1) {
-            echo "YAH";
+            echo "<script type=\"text/javascript\">alert(\"YAH\");</script>;"
         }
     }
 ?>
