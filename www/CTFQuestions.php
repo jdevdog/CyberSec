@@ -140,6 +140,10 @@
     					echo "</div>";
     					}
     		}
+    		echo "<form action=\"\" method=\"post\">";
+    		echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
+    		echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."\" placeholder=\"Answer\" name=\"das\"><br><br>";
+    		echo "</form>";		
     		//close connection
 			$conn-> close();
 ?>
@@ -147,7 +151,7 @@
     include "credentials.php";
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        //$myanswer = mysqli_real_escape_string($conn, $_POST['answer']);
+        $myanswer = mysqli_real_escape_string($conn, $_POST['dass']);
         $sql = "SELECT title FROM questions";
 		$result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
