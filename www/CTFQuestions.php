@@ -145,16 +145,16 @@
 ?>
 <?php
     include "credentials.php";
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $myanswer = mysqli_real_escape_string($conn, $_POST['answer']);
-        $sql = "SELECT title FROM questions WHERE answer = ' answer0'";
-		$result = mysqli_query($conn, $sql);
-        $count = mysqli_num_rows($result);
-        if($count == 1) {
+    //$conn = mysqli_connect($servername, $username, $password, $dbname);
+   // if($_SERVER["REQUEST_METHOD"] == "POST") {
+      //  $myanswer = mysqli_real_escape_string($conn, $_POST['answer']);
+     //   $sql = "SELECT title FROM questions WHERE answer = ' answer0'";
+	//	$result = mysqli_query($conn, $sql);
+     //   $count = mysqli_num_rows($result);
+     //   if($count == 1) {
             header("location: CTFSco.php");
-        }
-    }
+     //   }
+   // }
 ?>
 <!-- The Modal -->
 <div id="myModal" class="modal">
