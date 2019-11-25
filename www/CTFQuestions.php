@@ -99,6 +99,29 @@
 	<div id="navi">
 	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
 	</div>
+<?php
+	include "credentials.php";
+	if(isset($_SESSION['user_id'])) {
+		echo "user id set. user is " . $_SESSION['user_id'];
+	}
+
+				// Create connection
+			$conn = mysqli_connect($servername, $username, $password, $dbname);
+				// Check connection
+			if ($conn-> connect_error) {
+		    	die("Connection failed: " . $conn-> connect_error);
+			}
+			$teamID = $_SESSION['user_id'];
+			$sql = "SELECT score FROM teams where team_id =".$teamID;
+			$result = mysqli_query($conn, $sql);
+			if ($result-> num_rows > 0) {
+					while($row = $result-> fetch_assoc()) {
+							echo $row["score"];
+					}
+				}
+    		//close connection
+			$conn-> close();
+?>
 	<div id = "scoreboard">
 		<h1 id = "score">Current Score: 150</h1>
 	</div>
