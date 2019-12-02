@@ -9,10 +9,10 @@
 	if(!empty($_POST)) {
 		if(isset($_POST['submit'])) {
 			// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
+			$con = mysqli_connect($servername, $username, $password, $dbname);
 	// Check connection
-			if ($conn-> connect_error) {
-				die("Connection failed: " . $conn-> connect_error);
+			if ($con-> connect_error) {
+				die("Connection failed: " . $con-> connect_error);
 			}
 			//prepare sql statement using submit Post variable
 			$stmt = $con->prepare("SELECT * FROM questions WHERE qa_id = ?");
@@ -24,11 +24,20 @@
 			if($question) {
 				if($_POST['answer'] == $question->answer)
 				{
-					echo 'user score = ' . $user->score;
-					$stmt = $con->prepare("UPDATE teams SET score = ? WHERE team_id = ?");
-					$stmt->bind_param('ii', $user->score + $question->points, $_SESSION['user_id']);
+					//fetch the user as an object
+					$stmt = $con->prepare("SELECT * FROM teams WHERE team_id = ?");
+					$stmt->bind_param('i', $_POST['submit']);
 					$stmt->execute();
-					echo 'user score after points = ' . $user->score;
+					$result = $stmt->get_result();
+					$user = $result->fetch_object();
+
+					//calculate the user's score using the object created
+					$totalscore = $user->score + $question->points;
+
+					//use update to change the team's score to their new score
+					$stmt = $con->prepare("UPDATE teams SET score = ? WHERE team_id = ?");
+					$stmt->bind_param('ii',$totalscore, $_SESSION['user_id']);
+					$stmt->execute();
 				}
 			}
 			else {
@@ -142,15 +151,15 @@
 	if(isset($_SESSION['user_id'])) {
 		//echo "user id set. user is " . $_SESSION['user_id'];
 			// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
+			$con = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
-			if ($conn-> connect_error) {
-		    	die("Connection failed: " . $conn-> connect_error);
+			if ($con-> connect_error) {
+		    	die("Connection failed: " . $con-> connect_error);
 			}
 
 			$teamID = $_SESSION['user_id'];
 			$sql = "SELECT score FROM teams where team_id =".$teamID;
-			$result = mysqli_query($conn, $sql);
+			$result = mysqli_query($con, $sql);
 			echo "<div id = \"scoreboard\">";
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
@@ -159,7 +168,7 @@
 				}
 			echo "</div>";
     		//close connection
-			$conn-> close();
+			$con-> close();
 			}
 	?>
 	<br>
@@ -167,13 +176,13 @@
 		include "credentials.php";
 
 				// Create connection
-			$conn = mysqli_connect($servername, $username, $password, $dbname);
+			$con = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
-			if ($conn-> connect_error) {
-		    	die("Connection failed: " . $conn-> connect_error);
+			if ($con-> connect_error) {
+		    	die("Connection failed: " . $con-> connect_error);
 			}
 			$sql = "SELECT title, QAText, points, answer, max_attempts FROM questions";
-			$result = mysqli_query($conn, $sql);
+			$result = mysqli_query($con, $sql);
 			$qnum = 0;
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
@@ -192,7 +201,7 @@
     			}
     		}
     		//close connection
-			$conn-> close();
+			$con-> close();
 			?>
 <!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -245,15 +254,15 @@
 				include "credentials.php";
 
 				// Create connection
-				$conn = mysqli_connect($servername, $username, $password, $dbname);
+				$con = mysqli_connect($servername, $username, $password, $dbname);
 				// Check connection
-				if ($conn-> connect_error) {
-		    		die("Connection failed: " . $conn-> connect_error);
+				if ($con-> connect_error) {
+		    		die("Connection failed: " . $con-> connect_error);
 				}
 
 				//fetching all teams and looping through the rows
 				$sql = "SELECT title, QAtext, points, answer FROM questions";
-				$result = mysqli_query($conn, $sql);
+				$result = mysqli_query($con, $sql);
 				$rowCount = 0;
 				if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
@@ -277,7 +286,7 @@
 				}
 
 		//close connection
-		$conn-> close();
+		$con-> close();
 		?>
 
 <!--
