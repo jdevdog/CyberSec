@@ -160,8 +160,8 @@
     							echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
     							echo "<form action=\"\" method=\"post\">";
     								echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" name=\"" . $row["title"] . "answer" . "\" id=\"" .$row["title"] . "A" . "\" placeholder=\"Answer\">";
-    								echo "<input type=\"hidden\" id=\"".$row["title"]."C"."\" value=\"".$row["answer"]."\">";
-    								echo "<input type=\"Submit\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]"\"  onclick=\"javascript:validate(this.id)\">";
+    								//echo "<input type=\"hidden\" id=\"".$row["title"]."C"."\" value=\"".$row["answer"]."\">";
+    								echo "<input type=\"Submit\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]"\">";
     							echo "</form>";
     						echo "</div>";
     					echo "</div>";
