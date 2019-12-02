@@ -6,6 +6,32 @@
 	if(isset($_SESSION['user_id'])) {
 		//echo "user id set. user is " . $_SESSION['user_id'];
 	}
+	if(!empty($_POST) {
+						// Create connection
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+				// Check connection
+		if ($conn-> connect_error) {
+		    die("Connection failed: " . $conn-> connect_error);
+		}
+		$sql = "SELECT title, text, points, answer, max_attempts FROM questions ORDER BY points";
+		$result = mysqli_query($conn, $sql);
+		$qcount = 0;
+		$name = "";
+		if ($result-> num_rows > 0) {
+			while($row = $result-> fetch_assoc()) {
+				if(isset($_POST[$row['title'] . "answer"] )) {
+					echo $row['title'];
+					$answer = $_POST[$row['title'] . "answer"];
+					if($row['answer'] == $answer) {
+						$stmt = $con->prepare("UPDATE teams SET score = score + " . $row['score'] . " WHERE team_id = ? ");
+						$stmt->bind_param('s', $_SESSION['user_id']);
+						$stmt->execute();
+					}
+				}
+				$qcount = $qcount + 1;
+			}
+		}
+	}
 ?>
 <html>
 	<head>
@@ -122,24 +148,24 @@
 			if ($conn-> connect_error) {
 		    	die("Connection failed: " . $conn-> connect_error);
 			}
-			$sql = "SELECT title, text, points, answer, max_attempts FROM questions order by points";
+			$sql = "SELECT title, text, points, answer, max_attempts FROM questions";
 			$result = mysqli_query($conn, $sql);
+			$qcount = 0;
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
 						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
-						echo "<div class=\"modal-content\">";
-    					echo "<span class=\"close\">&times;</span>";
-    					echo "<p id=\"modalq\">".$row["text"]."</p>";
-    					echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
-    					//echo "<form action=\"\" method=\"post\">";
-    					//echo "<input type=\"submit\" value=\"Submit\" id=\"btn\">";
-    					//echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" placeholder=\"Answer\" name=\"answer\"><br><br>";
-    					echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" id=\"".$row["title"]."A"."\" placeholder=\"Answer\">";
-    					echo "<input type=\"hidden\" id=\"".$row["title"]."C"."\" value=\"".$row["answer"]."\">";
-    					echo "<input type=\"button\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]."\"  onclick=\"javascript:validate(this.id)\">";
-    					//echo "</form>";
+							echo "<div class=\"modal-content\">";
+    							echo "<span class=\"close\">&times;</span>";
+    							echo "<p id=\"modalq\">".$row["text"]."</p>";
+    							echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
+    							echo "<form action=\"\" method=\"post\">";
+    								echo "<input type=\"text\" style=\"width:30%;border-radius:12px;padding:14px;\" name=\"" . $row["title"] . "answer" . "\" id=\"" .$row["title"] . "A" . "\" placeholder=\"Answer\">";
+    								echo "<input type=\"hidden\" id=\"".$row["title"]."C"."\" value=\"".$row["answer"]."\">";
+    								echo "<input type=\"Submit\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" value=\"Submit\" id=\"".$row["title"]"\"  onclick=\"javascript:validate(this.id)\">";
+    							echo "</form>";
+    						echo "</div>";
     					echo "</div>";
-    					echo "</div>";
+    					$qcount = $qcount + 1;
     					}
     		}
     		//close connection
