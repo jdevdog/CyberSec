@@ -4,7 +4,7 @@ session_start();
  ?>
 <html>
 	<head>
-	<title>Welcome Team1</title>
+	<title>Scoreboard</title>
 	<link rel="stylesheet" href="Score.css">
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">

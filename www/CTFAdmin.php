@@ -4,7 +4,7 @@ session_start();
  ?>
 <html>
 	<head>
-	<title>Welcome Team1</title>
+	<title>Admin section</title>
 	<link rel="stylesheet" href="admin.css">
 	<?php
 		include "credentials.php";
@@ -67,7 +67,7 @@ function validate()
 		}
 
 		//fetching all teams and looping through the rows
-		$sql = "SELECT score, name FROM teams order by score";
+		$sql = "SELECT score, name FROM teams order by score desc";
 		$result = mysqli_query($conn, $sql);  							//$conn-> query($sql);
 		if ($result-> num_rows > 0) {
 			while($row = $result-> fetch_assoc()) {
