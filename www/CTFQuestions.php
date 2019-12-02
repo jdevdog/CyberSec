@@ -165,7 +165,7 @@
     							echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
     							echo "<form action=\"\" method=\"post\">";
     								echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\" style=\"width:30%;border-radius:12px;padding:14px;\" >";
-    								echo "<input type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"" . $qnum . "\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" >";
+    								echo "<input type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"submit\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" >";
     							echo "</form>";
     						echo "</div>";
     					echo "</div>";
