@@ -103,6 +103,25 @@
   clear: both;
 }
 
+/* formatting for the button and text fields on the modals */
+
+#qaBtn {
+	background-color:#872434;
+	color:white;
+	padding:14px 20px;
+	margin:8px 0px;
+	font-size:16px;
+	border:none;
+	border-radius:12px;
+	cursor:pointer;
+}
+
+#questionA {
+	width:30%;
+	border-radius:12px;
+	padding:14px;
+}
+
 /* end of code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
 </style>
 
@@ -164,8 +183,8 @@
     							echo "<p id=\"modalq\">".$row["QAText"]."</p>";
     							echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
     							echo "<form action=\"\" method=\"post\">";
-    								echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\" style=\"width:30%;border-radius:12px;padding:14px;\" >";
-    								echo "<input type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"submit\" style=\"background-color:#872434;color:white;padding:14px 20px;margin:8px 0px;font-size:16px;border:none;border-radius:12px;cursor:pointer;\" >";
+    								echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\">";
+    								echo "<button type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"".$qnum."\"> Submit </button>";
     							echo "</form>";
     						echo "</div>";
     					echo "</div>";
@@ -183,7 +202,7 @@
     <p id="modalq"></p>
     <p id="tries"></p>
     <input type="text" id="answer" placeholder="Answer">
-    <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
+    <button type="submit" value="Submit" id="btn"  onclick="javascript:validate()">
   </div>
 
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
