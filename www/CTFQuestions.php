@@ -6,7 +6,7 @@
 	if(isset($_SESSION['user_id'])) {
 		//echo "user id set. user is " . $_SESSION['user_id'];
 	}
-	if(!empty($_POST) {
+	if(!empty($_POST)) {
 		if(isset($_POST['submit'])) {
 			// Create connection
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
