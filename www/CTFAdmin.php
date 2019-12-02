@@ -56,7 +56,7 @@ function validate()
 
 
 <table id="teams">
-<tr><th>Team</th><th></th>Scores</tr>
+<tr><th>Team</th><th>Scores</th></tr>
 <?php
 		include "credentials.php";
 		// Create connection
