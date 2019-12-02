@@ -91,7 +91,7 @@ session_start();
 		}
 
 		//fetching all teams and looping through the rows
-		$sql = "SELECT score, name FROM teams order by score";
+		$sql = "SELECT score, name FROM teams order by score desc";
 		$result = mysqli_query($conn, $sql);  							//$conn-> query($sql);
 		if ($result-> num_rows > 0) {
 			while($row = $result-> fetch_assoc()) {
