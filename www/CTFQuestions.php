@@ -14,23 +14,25 @@
 			if ($con-> connect_error) {
 				die("Connection failed: " . $con-> connect_error);
 			}
-			//prepare sql statement using submit Post variable
+
+			//prepare sql statement and fetch the question as an object
 			$stmt = $con->prepare("SELECT * FROM questions WHERE qa_id = ?");
 			$stmt->bind_param('i', $_POST['submit']);
 			$stmt->execute();
 			$result = $stmt->get_result();
 			$question = $result->fetch_object();
 
-			if($question) {
-				if($_POST['answer'] == $question->answer)
-				{
-					//fetch the user as an object
-					$stmt = $con->prepare("SELECT * FROM teams WHERE team_id = ?");
-					$stmt->bind_param('i', $_POST['submit']);
-					$stmt->execute();
-					$result = $stmt->get_result();
-					$user = $result->fetch_object();
+			//fetch the user as an object
+			$stmt = $con->prepare("SELECT * FROM teams WHERE team_id = ?");
+			$stmt->bind_param('i', $_POST['submit']);
+			$stmt->execute();
+			$result = $stmt->get_result();
+			$user = $result->fetch_object();
 
+			//check if the submitted answer is correct
+			if($question) {
+				if($_POST['answer'] == $question->answer) //if the answer is correct
+				{
 					//calculate the user's score using the object created
 					$totalscore = $user->score + $question->points;
 
@@ -38,10 +40,49 @@
 					$stmt = $con->prepare("UPDATE teams SET score = ? WHERE team_id = ?");
 					$stmt->bind_param('ii',$totalscore, $_SESSION['user_id']);
 					$stmt->execute();
+
+					$message = "Your answer was correct!";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+				}
+				else //incorrect answer
+				{
+					//echo 'wrong answer';
+					//check questions_attempted table to see if the team has made any previous attempts
+					//(if an entry exists matching teamid and qa_id then they have made an attempt)
+					$userid = $user->team_id;
+					$qaid = $question->qa_id;
+					$stmt = $con->prepare("SELECT * FROM questions_attempted WHERE team_id = ? AND qa_id = ?");
+					$stmt->bind_param('ii',$userid, $qaid);
+					$stmt->execute();
+					$result = $stmt->get_result();
+
+					if($result == false) //if this is their first attempt
+					{
+						//insert a new entry for the team and the question
+						//echo 'inserting new attempt entry';
+						$stmt = $con->prepare("INSERT INTO questions_attempted (team_id, qa_id, attempts) VALUES (?, ?, 1)");
+						$stmt->bind_param('ii',$userid, $qaid);
+						$stmt->execute();
+					}
+					else //if they've made previous attempts
+					{
+						//echo 'there exists an entry.';
+						$attempts = $result->fetch_object();
+						if($attempts->attempts < $question->max_attempts) {
+								$stmt = $con->prepare("UPDATE questions_attempted SET attempts = attempts + 1 WHERE team_id = ? and qa_id = ?");
+								$stmt->bind_param('ii',$userid, $qaid);
+								$stmt->execute();
+						}
+						else {
+							$message = "Maximum attempts exceeded.";
+							echo "<script type='text/javascript'>alert('$message');</script>";
+						}
+
+					}
 				}
 			}
 			else {
-				echo 'did not find question match';
+				echo 'ERROR: did not find question match';
 			}
 		}
 	}
@@ -140,8 +181,6 @@
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
 <body>
 	<div id="navi">
 	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
@@ -186,6 +225,7 @@
 			$qnum = 0;
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
+
 						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
 							echo "<div class=\"modal-content\">";
     							echo "<span class=\"close\">&times;</span>";
