@@ -194,20 +194,7 @@
     <input type="text" id="answer" placeholder="Answer">
     <input type="button" value="Submit" id="btn"  onclick="javascript:validate()">
   </div>
-<script type="text/javascript">
-function validate(currentID)
-{
-    if(   document.getElementById(currentID + "A").value ==  document.getElementById(currentID + "C").value )
-    {
-        alert( "Correct!" );
 
-    }
-    else{
-    	alert( "Wrong answer" );
-    }
-
-}
-</script>
 <!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
 <script type="text/javascript">
 function showQ(currentID)
