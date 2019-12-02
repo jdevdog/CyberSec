@@ -153,7 +153,7 @@
 			if ($conn-> connect_error) {
 		    	die("Connection failed: " . $conn-> connect_error);
 			}
-			$sql = "SELECT title, text, points, answer, max_attempts FROM questions";
+			$sql = "SELECT title, QAText, points, answer, max_attempts FROM questions";
 			$result = mysqli_query($conn, $sql);
 			$qnum = 0;
 			if ($result-> num_rows > 0) {
@@ -161,7 +161,7 @@
 						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
 							echo "<div class=\"modal-content\">";
     							echo "<span class=\"close\">&times;</span>";
-    							echo "<p id=\"modalq\">".$row["text"]."</p>";
+    							echo "<p id=\"modalq\">".$row["QAText"]."</p>";
     							echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
     							echo "<form action=\"\" method=\"post\">";
     								echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\" style=\"width:30%;border-radius:12px;padding:14px;\" >";
@@ -233,7 +233,7 @@
 				}
 
 				//fetching all teams and looping through the rows
-				$sql = "SELECT title, text, points, answer FROM questions";
+				$sql = "SELECT title, QAtext, points, answer FROM questions";
 				$result = mysqli_query($conn, $sql);
 				$rowCount = 0;
 				if ($result-> num_rows > 0) {
