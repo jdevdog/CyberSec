@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Start of code from https://www.w3schools.com/css/css_table.asp -->
+<style>
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr: {background-color: #f2f2f2;}
+
+tr:hover {background-color: #39CCCC;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0080ff;
+  color: white;
+}
+</style>
+<!--End of code from https://www.w3schools.com/css/css_table.asp -->
+  <meta charset="utf-8">
+  <!-- Bootstrap 4; Sets initial zoom level and sets the width to the screen width of the viewing device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Imports Google Font Open-Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- General Stylesheet Link -->
+  <link rel="stylesheet" type="text/css" href="../css/BootstrapTemplate.css">
+  <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+</head>
+
+<body>
+		<div class="topnav">
+			<a href="#home"><img src="images/home.png" width="15" height = "15"><br>Home</a>
+			<a href="#t3"><img src="images/wrench.png" width="15" height = "15"><br>Tools, Tips, and Tricks</a>
+			<a href="#intern"><img src="images/briefcase.png" width="15" height = "15"><br>Internships</a>
+			<a href="index.php"><img src="images/flag.png" width="15" height = "15"><br>Capture the Flag</a>
+			<a href="#alumni"><img src="images/persons.png" width="15" height = "15"><br>Alumni</a>
+			<a href="#research"><img src="images/books.png" width="15" height = "15"><br>Research</a>
+        </div>
+        <br>
+        <br>
+<!-- Container for header -->
+<div class="container-fluid"> <!-- container-fluid is a full width container. it scales to the screen width -->
+    <div class="row header"> <!-- each row can contain up to 12 columns. no matter what, all col must add up to 12 -->
+      <div class="col-sm-1">
+        <div class="dropdown">
+          <button type="button" class="btn" data-toggle="dropdown">
+            <img src='burger-menu.jpg' class='img-fluid'>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="MainPage.html"><h3>Home</h3></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="CyberFAQs.html"><h3>Cybersecurity FAQS</h3></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="index.php"><h3>Capture the Flag</h3></a>
+          </div>
+        </div>
+    </div> <!-- img-fluid will scaled images to the size of their parent -->
+      <div class="col-sm-9"><h1 class="img-fluid">Cyber Security Website</h1></div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
+    </div>
+</div>
+
+<div class="jumbotron main" style="height: auto;"> <!-- jumbotron acts like a big screen, and anything inside of it is fit to its dimensions -->
+  <div class="container-fluid"> <!-- normally this would watch screen-width, but since it's in a jumbotron, it only matches jumbotron width -->
+    <div class="row">
+      <div>
+	  <h1>Cybersecurity FAQS</h1>
+	  <br>
+	  <br>
+	  <br>
+      <p><b>When can I declare the new Cybersecurity major?</b> Students can declare the 
+      new major starting on August 26, 2019.</p>
+      <p><b>What courses are required for the new Cybersecurity major?</b> The new major is 44 to 45
+      credits as follows:</p>
+      
+      <p><b>What kind of job can I get with a major in Cybersecurity?</b> Many cyber security experts 
+      fall under the title of Information Security Analyst. This position, according to the Bureau of 
+      Labor Statistics, <b>is growing at a rate of 28%</b> which is considered much faster than average.
+      With an estimated 28,500 jobs being created between 2016 and 2026, it's quite clear that is a
+      great need for more cyber security experts. Other job possibilities include:</p>
+      
+      <ol>
+  		<li>The following required courses:</li>
+  			<ul>
+  				<li>CPSC 220</li>
+  				<li>CPSC 225</li>
+  				<li>CPSC 240</li>
+  				<li>CPSC 318</li>
+  				<li>CPSC 340</li>
+  				<li>BLAW 300</li>
+  				<li>MATH 253</li>
+  				<li>CPSC 318</li>
+  			</ul>
+  		<li>One course from each of the following pairs of two courses</li>
+  			<ul>
+  				<li>CPSC 284 or Math 201</li>
+  				<li>CPSC 302 or PHIL 225</li>
+  				<li>CPSC 345 or MIST 411</li>
+  				<li>CPSC 435 or MIST 444</li>
+  			</ul>
+  		<li>Two courses, minimum of three credits each:</li>
+  			<ul>
+  				<li>CPSC 445</li>
+  				<li>CYBR 491</li>
+  				<li>CYBR 499</li>
+  				<li>Other course approved by the program director</li>
+  			</ul>
+  		<li>A maximum of 3 credits of CYBR 499</li>
+  		<li>A maximum of 6 credits of CYBR 491 may count towards the major</li>
+	  </ol> 
+      
+      <p><b>In what order should I complete the courses required for the new Cybersecurity major?</b>
+      The new Cybersecurity major is designed as a three-year plan. Some courses are offered in both the
+      fall/spring and other courses are only fall OR spring semesters. The following is the recommended
+      3-year course plan:</p>
+      <p><b>Computer Security Courses</b><p>
+      <table>
+  		<tr>
+    		<th>Year</th>
+    		<th>Fall Semester</th>
+    		<th>Spring Semester</th>
+  		</tr>
+  		<tr>
+    		<td><b>Year 1</b></td>
+    		<td>CPSC 220<br>
+    		    CPSC 284 or MATH 201</td>
+    		<td>CPSC 225<br>
+    		    CPSC 240<br>
+    		    MATH 253</td>
+  		</tr>
+  		<tr>
+    		<td><b>Year 2</b></td>
+    		<td>CPSC 345 or MIST 411<br>
+    		    CPSC 318<br>
+    		    BLAW 300 (or Spring)</td>
+    		<td>CPSC 340<br>
+    		    CPSC 435 or MIST 444<br>
+    		    BLAW 300 (if needed)</td>
+  		</tr>
+  		<tr>
+    		<td><b>Year 3</b></td>
+    		<td>CPSC 445<br>
+    		    CPSC 435 or MIST 444<br>
+    		    or other 400+ level</td>
+    		<td>CYBR 491 or CYBR 499<br>
+    		    CPSC 414</td>
+  		</tr>
+  		</table>
+	  </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron main" style="position:absolute; right:13%; background-color: orange; width: 25%;height: 25%;padding-top:10px;">
+<p>Questions?<br>
+Dr. Andrew Marshall<br>
+Assistant Professor<br>
+Computer Science<br>
+Trinkle B16<br>
+marshall@umw.edu<br>
+540-654-2245</p>
+</div>
+
+
+</body>
+
+</html>

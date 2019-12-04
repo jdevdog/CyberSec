@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Start of code from https://www.w3schools.com/css/css_table.asp -->
+<style>
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr: {background-color: #f2f2f2;}
+
+tr:hover {background-color: #39CCCC;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0080ff;
+  color: white;
+}
+</style>
+<!--End of code from https://www.w3schools.com/css/css_table.asp -->
+  <meta charset="utf-8">
+  <!-- Bootstrap 4; Sets initial zoom level and sets the width to the screen width of the viewing device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Imports Google Font Open-Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- General Stylesheet Link -->
+  <link rel="stylesheet" type="text/css" href="../css/BootstrapTemplate.css">
+  <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+</head>
+
+<body>
+<div class="topnav">
+			<a href="#home"><img src="images/home.png" width="15" height = "15"><br>Home</a>
+			<a href="#t3"><img src="images/wrench.png" width="15" height = "15"><br>Tools, Tips, and Tricks</a>
+			<a href="#intern"><img src="images/briefcase.png" width="15" height = "15"><br>Internships</a>
+			<a href="../index.php"><img src="images/flag.png" width="15" height = "15"><br>Capture the Flag</a>
+			<a href="#alumni"><img src="images/persons.png" width="15" height = "15"><br>Alumni</a>
+			<a href="#research"><img src="images/books.png" width="15" height = "15"><br>Research</a>
+</div>
+        <br>
+        <br>
+<!-- Container for header -->
+<div class="container-fluid"> <!-- container-fluid is a full width container. it scales to the screen width -->
+    <div class="row header"> <!-- each row can contain up to 12 columns. no matter what, all col must add up to 12 -->
+      <div class="col-sm-1">
+        <div class="dropdown">
+          <button type="button" class="btn" data-toggle="dropdown">
+            <img src='burger-menu.jpg' class='img-fluid'>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="MainPage.html"><h3>Home</h3></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="CyberFAQs.html"><h3>Cybersecurity FAQS</h3></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="../index.php"><h3>Capture the Flag</h3></a>
+          </div>
+        </div>
+    </div> <!-- img-fluid will scaled images to the size of their parent -->
+      <div class="col-sm-9"><h1 class="img-fluid">Cyber Security Website</h1></div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
+    </div>
+</div>
+
+<div class="jumbotron main" style="height: auto;"> <!-- jumbotron acts like a big screen, and anything inside of it is fit to its dimensions -->
+  <div class="container-fluid"> <!-- normally this would watch screen-width, but since it's in a jumbotron, it only matches jumbotron width -->
+    <div class="row">
+      <div>
+	  <h1>Cyber Security</h1>
+	  <h4>New Computer Science Major in Cyber Security</h4>
+	  <br>
+	  <br>
+	  <br>
+	  <p>Our new major in <b>Cyber Security</b> provides students with a solid foundation 
+	     Foundation in security fundamentals. It includes in-depth and hands-on exposure to several key areas of cybersecurity such as system/OS security, penetration testing, and software security, thus allowing the student to obtain practical experience in these areas. The major also includes coursework on cryptography from the Mathematics department, and cybersecurity law from the Business college. </p>
+
+      <p>Some courses required for the Cybersecurity major will only be offered in the fall or spring semesters. The following CPSC coursers will only be offered once per year. </p>
+      
+      <p><b>Computer Security Courses</b><p>
+      <table>
+  		<tr>
+    		<th>Course</th>
+    		<th>1st Semester Offered</th>
+    		<th>Semesters Available</th>
+    		<th>Pre-requisites</th>
+  		</tr>
+  		<tr>
+    		<td>CPSC 318</td>
+    		<td>Fall 2019</td>
+    		<td>Fall</td>
+    		<td>CPSC 225</td>
+  		</tr>
+  		<tr>
+    		<td>CPSC 345</td>
+    		<td>Fall 2019</td>
+    		<td>Fall</td>
+    		<td>CPSC 220 & 225</td>
+  		</tr>
+  		<tr>
+    		<td>CPSC 445</td>
+    		<td>Fall 2019</td>
+    		<td>Fall</td>
+    		<td>CPSC 345</td>
+  		</tr>
+  		<tr>
+    		<td>CPSC 414</td>
+    		<td>Spring 2020</td>
+    		<td>Spring</td>
+    		<td>CPSC 220 & 225</td>
+  		</tr>
+  		<tr>
+    		<td>CPSC 435</td>
+    		<td>Spring 2021</td>
+    		<td>Spring</td>
+    		<td>CPSC 225 & 345<br>
+    		     MATH 253</td>
+  		</tr>
+  		</table>
+	  </div>
+    </div>
+  </div>
+</div>
+<div class="jumbotron main" style="position:absolute; right:13%; background-color: orange; width: 25%;height: 25%;padding-top:10px;">
+<p>Questions?<br>
+Dr. Andrew Marshall<br>
+Assistant Professor<br>
+Computer Science<br>
+Trinkle B16<br>
+marshall@umw.edu<br>
+540-654-2245</p>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+.main {
+  margin-top:7%;
+  margin-left:22%;
+  height: 80%;;
+  width: 70%;
+  background-color:#0D3559;
+  opacity:0.9;
+}
+
+html {
+  font-family:'Open Sans', sans-serif; /*arial is the backup font*/
+}
+
+html, body {
+  height:100%;
+  color:white;
+}
+
+body {
+  background: url('https://adminfinance.umw.edu/facilities/files/2018/09/umw-11132017-027.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.topnav {
+	overflow: hidden;
+	background-color: #4D6B8B;	
+	z-index: 1000;
+	top: 0;
+	position: fixed;
+	width: 100%; 
+}
+
+.topnav a {
+	
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 8px 20px;
+	text-decoration: none;
+	font-size: 16px;
+	width: 16.6666666666%;
+}
+
+.topnav a:hover {
+	background-color: #686663;
+	color: white;
+}
