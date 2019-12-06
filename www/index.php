@@ -36,7 +36,7 @@
 <html>
 	<head>
 	<title>Capture the Flag</title>
-	<link rel="stylesheet" href="CTF.css">
+	<link rel="stylesheet" href="./css/CTF.css">
 	</head>
 	<body>
 	<div id="page">

@@ -4,32 +4,32 @@ session_start();
  ?>
 <html>
 	<head>
-	<title>Admin section</title>
-	<link rel="stylesheet" href="admin.css">
-	<?php
-		include "credentials.php";
-                // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-        if ($conn-> connect_error) {
-                die("Connection failed: " . $conn-> connect_error);
-        }
+  	<title>Admin section</title>
+  	<link rel="stylesheet" href="./css/admin.css">
+  	<?php
+  		include "credentials.php";
+                  // Create connection
+          $conn = mysqli_connect($servername, $username, $password, $dbname);
+                  // Check connection
+          if ($conn-> connect_error) {
+                  die("Connection failed: " . $conn-> connect_error);
+          }
 
-        	if(isset($_POST['Invite'])) {
-            	$myteam = mysqli_real_escape_string($conn, $_POST['team']);
-            	$sql = "SELECT name FROM teams";
-				$result = mysqli_query($conn, $sql);
-            	$count = mysqli_num_rows($result) + 0;
-				$sql = "INSERT INTO 'teams' ('team_id', 'score', 'name', 'password') VALUES (6, 0, 'test', 'password'";
-				mysqli_query($conn, $sql);
-				}
-
-?>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+          	if(isset($_POST['Invite'])) {
+              	$myteam = mysqli_real_escape_string($conn, $_POST['team']);
+              	$sql = "SELECT name FROM teams";
+  				$result = mysqli_query($conn, $sql);
+              	$count = mysqli_num_rows($result) + 0;
+  				$sql = "INSERT INTO 'teams' ('team_id', 'score', 'name', 'password') VALUES (6, 0, 'test', 'password')";
+  				mysqli_query($conn, $sql);
+  				}
+    ?>
+  	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	</head>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<body>
 		<div id="navi">

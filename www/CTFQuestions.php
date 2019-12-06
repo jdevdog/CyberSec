@@ -89,95 +89,9 @@
 ?>
 
 <html>
-<style>
-/* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  /*background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  /*background-color: #fefefe;*/
-  background-color: #04315a;
-  color: #ffffff;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 12px;
-  width: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  /*height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* formatting for the button and text fields on the modals */
-
-#qaBtn {
-	background-color:#872434;
-	color:white;
-	padding:14px 20px;
-	margin:8px 0px;
-	font-size:16px;
-	border:none;
-	border-radius:12px;
-	cursor:pointer;
-}
-
-#questionA {
-	width:30%;
-	border-radius:12px;
-	padding:14px;
-}
-
-/* end of code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
-</style>
-
 <head>
 	<title>Welcome</title>
-	<link rel="stylesheet" href="Question.css">
+	<link rel="stylesheet" href="./css/CTFQuestions.css">
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -220,20 +134,23 @@
 			if ($con-> connect_error) {
 		    	die("Connection failed: " . $con-> connect_error);
 			}
+
+
+
 			$sql = "SELECT title, QAText, points, answer, max_attempts FROM questions";
 			$result = mysqli_query($con, $sql);
 			$qnum = 0;
 			if ($result-> num_rows > 0) {
 					while($row = $result-> fetch_assoc()) {
-
 						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
 							echo "<div class=\"modal-content\">";
     							echo "<span class=\"close\">&times;</span>";
     							echo "<p id=\"modalq\">".$row["QAText"]."</p>";
-    							echo "<p id=\"tries\">"."Attempts Left: ".$row["max_attempts"]."</p>";
+    							echo "<p id=\"tries\">"."Attempts Left: ". $row['max_attempts'] . "</p>";
     							echo "<form action=\"\" method=\"post\">";
-    								echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\">";
-    								echo "<button type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"".$qnum."\"> Submit </button>";
+											//echo "<p> Sorry! You've attempted the question the maximum number of times! </p>";
+											echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\">";
+											echo "<button type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"".$qnum."\"> Submit </button>";
     							echo "</form>";
     						echo "</div>";
     					echo "</div>";
@@ -329,34 +246,6 @@
 		$con-> close();
 		?>
 
-<!--
-			<div class="row">
-  				<div class="column odd1" style="background-color:#04315a;">
-    				<h2>Wireshark (50xp)</h2>
-    				<button class="qbtn" id="myBtn">Open Question</button>
-  				</div>
-  			<div class="column odd2" style="background-color:#1d456a;">
-    			<h2>Heartbleed (50xp)</h2>
-    			<button class="qbtn" id="myBtn2" disabled>Completed</button>
-  			</div>
-  			<div class="column odd3" style="background-color:#365a7a;">
-    			<h2>Format String (100xp)</h2>
-    			<button class="qbtn" id="myBtn3" disabled>Exceeded Attempts</button>
-			</div>
-			<br>
-			<div class="row">
-  				<div class="column even1" style="background-color:#365a7a;">
-    				<h2>Buffer Overflow (50xp)</h2>
-    				<button class="qbtn" id="myBtn">Open Question</button>
-  				</div>
-  			<div class="column even2" style="background-color:#04315a;">
-    			<h2>BLEH (50xp)</h2>
-    			<button class="qbtn" id="myBtn2" disabled>Completed</button>
-  			</div>
-  			<div class="column even3" style="background-color:#1d456a;">
-    			<h2>beh (100xp)</h2>
-    			<button class="qbtn" id="myBtn3" disabled>Exceeded Attempts</button>
-			</div> -->
 </div>
 </body>
 </html>
