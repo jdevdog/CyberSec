@@ -3,249 +3,155 @@
 <?php
 	session_start();
 	include "credentials.php";
-	if(isset($_SESSION['user_id'])) {
-		//echo "user id set. user is " . $_SESSION['user_id'];
-	}
-	if(!empty($_POST)) {
-		if(isset($_POST['submit'])) {
-			// Create connection
-			$con = mysqli_connect($servername, $username, $password, $dbname);
+	include_once "question_answers.php";
+	// Create connection
+	$con = mysqli_connect($servername, $username, $password, $dbname);
 	// Check connection
-			if ($con-> connect_error) {
-				die("Connection failed: " . $con-> connect_error);
-			}
+	if ($con-> connect_error)
+	{
+		die("Connection failed: " . $con-> connect_error);
+	}
 
-			//prepare sql statement and fetch the question as an object
-			$stmt = $con->prepare("SELECT * FROM questions WHERE qa_id = ?");
-			$stmt->bind_param('i', $_POST['submit']);
-			$stmt->execute();
-			$result = $stmt->get_result();
-			$question = $result->fetch_object();
-
-			//fetch the user as an object
-			$stmt = $con->prepare("SELECT * FROM teams WHERE team_id = ?");
-			$stmt->bind_param('i', $_POST['submit']);
-			$stmt->execute();
-			$result = $stmt->get_result();
-			$user = $result->fetch_object();
-
-			//check if the submitted answer is correct
-			if($question) {
-				if($_POST['answer'] == $question->answer) //if the answer is correct
-				{
-					//calculate the user's score using the object created
-					$totalscore = $user->score + $question->points;
-
-					//use update to change the team's score to their new score
-					$stmt = $con->prepare("UPDATE teams SET score = ? WHERE team_id = ?");
-					$stmt->bind_param('ii',$totalscore, $_SESSION['user_id']);
-					$stmt->execute();
-
-					$message = "Your answer was correct!";
-					echo "<script type='text/javascript'>alert('$message');</script>";
-				}
-				else //incorrect answer
-				{
-					//echo 'wrong answer';
-					//check questions_attempted table to see if the team has made any previous attempts
-					//(if an entry exists matching teamid and qa_id then they have made an attempt)
-					$userid = $user->team_id;
-					$qaid = $question->qa_id;
-					$stmt = $con->prepare("SELECT * FROM questions_attempted WHERE team_id = ? AND qa_id = ?");
-					$stmt->bind_param('ii',$userid, $qaid);
-					$stmt->execute();
-					$result = $stmt->get_result();
-
-					if($result == false) //if this is their first attempt
-					{
-						//insert a new entry for the team and the question
-						//echo 'inserting new attempt entry';
-						$stmt = $con->prepare("INSERT INTO questions_attempted (team_id, qa_id, attempts) VALUES (?, ?, 1)");
-						$stmt->bind_param('ii',$userid, $qaid);
-						$stmt->execute();
-					}
-					else //if they've made previous attempts
-					{
-						//echo 'there exists an entry.';
-						$attempts = $result->fetch_object();
-						if($attempts->attempts < $question->max_attempts) {
-								$stmt = $con->prepare("UPDATE questions_attempted SET attempts = attempts + 1 WHERE team_id = ? and qa_id = ?");
-								$stmt->bind_param('ii',$userid, $qaid);
-								$stmt->execute();
-						}
-						else {
-							$message = "Maximum attempts exceeded.";
-							echo "<script type='text/javascript'>alert('$message');</script>";
-						}
-
-					}
-				}
-			}
-			else {
-				echo 'ERROR: did not find question match';
-			}
+	if(!empty($_POST))
+	{
+		if(isset($_POST['submit']))
+		{
+			checkAnswer($_POST['submit'], $_SESSION['user_id'], $_POST['answer']);
 		}
+    header("Location: " . $_SERVER['PHP_SELF']);
 	}
 ?>
 
 <html>
 <head>
-	<title>Welcome</title>
-	<link rel="stylesheet" href="./css/CTFQuestions.css">
+  <!--End of code from https://www.w3schools.com/css/css_table.asp -->
+    <meta charset="utf-8">
+    <!-- Bootstrap 4; Sets initial zoom level and sets the width to the screen width of the viewing device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Imports Google Font Open-Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- General Stylesheet Link -->
+    <link rel="stylesheet" type="text/css" href="./css/Questions.css">
+    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
-	<div id="navi">
-	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
-	</div>
-	<?php
-	include "credentials.php";
-	if(isset($_SESSION['user_id'])) {
-		//echo "user id set. user is " . $_SESSION['user_id'];
-			// Create connection
-			$con = mysqli_connect($servername, $username, $password, $dbname);
-				// Check connection
-			if ($con-> connect_error) {
-		    	die("Connection failed: " . $con-> connect_error);
-			}
-
-			$teamID = $_SESSION['user_id'];
-			$sql = "SELECT score FROM teams where team_id =".$teamID;
-			$result = mysqli_query($con, $sql);
-			echo "<div id = \"scoreboard\">";
-			if ($result-> num_rows > 0) {
-					while($row = $result-> fetch_assoc()) {
-						echo "<h1 id = \"score\">Current Score: ".$row["score"]."</h1>";
-					}
-				}
-			echo "</div>";
-    		//close connection
-			$con-> close();
-			}
-	?>
-	<br>
-		<?php
-		include "credentials.php";
-
-				// Create connection
-			$con = mysqli_connect($servername, $username, $password, $dbname);
-				// Check connection
-			if ($con-> connect_error) {
-		    	die("Connection failed: " . $con-> connect_error);
-			}
-
-
-
-			$sql = "SELECT title, QAText, points, answer, max_attempts FROM questions";
-			$result = mysqli_query($con, $sql);
-			$qnum = 0;
-			if ($result-> num_rows > 0) {
-					while($row = $result-> fetch_assoc()) {
-						echo "<div id=\"".$row["title"]."M"."\" class=\"modal\">";
-							echo "<div class=\"modal-content\">";
-    							echo "<span class=\"close\">&times;</span>";
-    							echo "<p id=\"modalq\">".$row["QAText"]."</p>";
-    							echo "<p id=\"tries\">"."Attempts Left: ". $row['max_attempts'] . "</p>";
-    							echo "<form action=\"\" method=\"post\">";
-											//echo "<p> Sorry! You've attempted the question the maximum number of times! </p>";
-											echo "<input type=\"text\" name=\"answer\" id=\"questionA\" placeholder=\"Answer\">";
-											echo "<button type=\"Submit\" name=\"submit\" id=\"qaBtn\" value=\"".$qnum."\"> Submit </button>";
-    							echo "</form>";
-    						echo "</div>";
-    					echo "</div>";
-    					$qnum++;
-    			}
-    		}
-    		//close connection
-			$con-> close();
-			?>
-<!-- The Modal -->
-	<div id="myModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="modalq"></p>
-    <p id="tries"></p>
-    <input type="text" id="answer" placeholder="Answer">
-    <button type="submit" value="Submit" id="btn"  onclick="javascript:validate()">
+  <div class="container-fluid"> <!-- container-fluid is a full width container. it scales to the screen width -->
+      <div class="row header"> <!-- each row can contain up to 12 columns. no matter what, all col must add up to 12 -->
+        <div class="col-sm-1">
+          <div class="dropdown">
+            <button type="button" class="btn" data-toggle="dropdown">
+              <img src='./include/images/burger-menu.jpg' class='img-fluid'>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./html/MainPage.html"><h3>Home</h3></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./html/CyberFAQs.html"><h3>Cybersecurity FAQS</h3></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./index.php"><h3>Capture the Flag</h3></a>
+            </div>
+          </div>
+        </div> <!-- img-fluid will scaled images to the size of their parent -->
+        <div class="col-sm-6"><h1 id='headerTitle'>Cyber Security: CTF</h1></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2"><button type="button" class="btn btn-primary" id="login">Login</button></div>
+      </div>
   </div>
 
-<!--start of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
-<script type="text/javascript">
-	function showQ(currentID)
+<?php
+    include "credentials.php";
+    // Create connection
+    $con = mysqli_connect($servername, $username, $password, $dbname);
+    // Check connection
+    if ($con-> connect_error)
+		{
+        die("Connection failed: " . $con-> connect_error);
+    }
+
+    $teamID = $_SESSION['user_id'];
+    $sql = "SELECT score FROM teams where team_id =".$teamID;
+    $result = mysqli_query($con, $sql);
+    echo "<div class='container' id='scoreboard'>";
+    if ($result-> num_rows > 0)
+		{
+        while($row = $result-> fetch_assoc())
+				{
+        echo "<h1>Your Team's Total Score: ".$row["score"]."</h1>";
+      	}
+    }
+   echo "</div>";
+?>
+
+<br>
+
+<div class="body row">
+
+<?php
+  include "credentials.php";
+	$con = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($con-> connect_error)
+  {
+      die("Connection failed: " . $con-> connect_error);
+  }
+ 	//select the question
+  $sql = "SELECT * FROM questions";
+  $result = mysqli_query($con, $sql);
+  $qnum = 0;
+  if ($result-> num_rows > 0)
 	{
-	/* Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
-	// Get the modal
+    while($row = $result-> fetch_assoc())
+		{
+      echo "<div class='col-sm-3'>";
+        echo "<div class='container main'>";
+        //MODAL TITLE UNOPENED
+        echo "<h2>" . $row['title'] . "</h2>";
+        //BUTTON TO OPEN THE MODAL
+        echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#MyModal" . $qnum . "'> Open Question </button>";
+        //THE MODAL
+        echo "<div class='modal fade' id='MyModal" . $qnum . "'>";
+          echo "<div class='modal-dialog'>";
+            echo "<div class='modal-content'>";
+            //MODAL HEADER
+              echo "<div class='modal-header'>";
+                echo "<h4 class='modal-title'>" . $row["QAText"] . "</h4>";
+                echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+              echo "</div>"; //CLOSE MODAL HEADER
 
-	var modal = document.getElementById(currentID + "M");
+							  //MODAL BODY
+              echo "<div class='modal-body'>";
+							if(checkActive($_SESSION['user_id'], $row['qa_id']))
+							{
+								echo "<form class='form-inline' action='".$_SERVER['PHP_SELF']."' method='post'>";
+									echo "<input type='text' name='answer' class='form-control' id='answerT' placeholder='Enter your answer here.'>";
+									echo "<button type='submit' name='submit' class='btn btn-primary' value='".$qnum."'> Submit </button>";
+								echo "</form>";//CLOSE FORM
+							} else
+							{
+								echo "You can no longer submit an answer to this question.";
+							}
+              echo "</div>"; //CLOSE MODAL-BODY
 
-	// Get the button that opens the modal
-	var btn = document.getElementById(currentID);
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks the button, open the modal
-
-	modal.style.display = "block";
-
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
-	  }
-	}
-	/* end of Code from https://www.w3schools.com/howto/howto_css_modals.asp October 20th */
-	}
-</script>
-<!--end of code from https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button-->
-</div>
-	<h2 id="q1">Questions</h2>
-			<?php
-				include "credentials.php";
-
-				// Create connection
-				$con = mysqli_connect($servername, $username, $password, $dbname);
-				// Check connection
-				if ($con-> connect_error) {
-		    		die("Connection failed: " . $con-> connect_error);
-				}
-
-				//fetching all teams and looping through the rows
-				$sql = "SELECT title, QAtext, points, answer FROM questions";
-				$result = mysqli_query($con, $sql);
-				$rowCount = 0;
-				if ($result-> num_rows > 0) {
-					while($row = $result-> fetch_assoc()) {
-						if ($rowCount == 0){
-							echo "<div class=\"row\">";
-						}
-						++$rowCount;
-						echo "<div class=\"column odd1\" style=\"background-color:#04315a;\">";
-						echo "<h2>".$row["title"]." (".$row["points"]."xp)</h2>";
-						echo "<button class=\"qbtn\" id=\"".$row["title"]."\" onclick=\"javascript:showQ(this.id)\">Open Question</button>";
-						echo "</div>";
-
-						if ($rowCount == 3){
-							echo "</div>";
-							$rowCount = 0;
-						}
-				}
-				}
-				else {
-					echo "<h1>No Questions Available<h1>";
-				}
-
-		//close connection
-		$con-> close();
-		?>
-
+              echo "<div class='modal-footer'>";
+                echo "<p id='tries'> Attempts Left: ".getAttempts($_SESSION['user_id'], $row['qa_id'])."</p>";
+              echo "</div>";//CLOSE FOOTER
+             echo "</div>"; //CLOSE MODAL-CONTENT
+            echo "</div>"; //CLOSE MODAL-DIALOG
+           echo "</div>"; //CLOSE MODAL
+          echo "</div>"; //CLOSE CONTAINER
+				echo "</div>"; //CLOSE SM-COL-4
+      $qnum++;
+    }
+  }
+?>
 </div>
 </body>
 </html>
