@@ -107,10 +107,6 @@ session_start();
         <div class="col-sm-3"></div>
         <div class="col-sm-2"><button type="button" class="btn btn-primary" id="login">Login</button></div>
       </div>
-  </div>
-	<div id="navi">
-	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a>
-	</div>
 		<br>
 		<table id="teams"class="table-responsive table-bordered">
 		<tr>
@@ -143,7 +139,7 @@ session_start();
 	?>
 	</table>
 		<br>
-
+  </div>
 
 
 
