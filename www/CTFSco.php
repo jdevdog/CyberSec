@@ -134,7 +134,6 @@ th {
         </div> <!-- img-fluid will scaled images to the size of their parent -->
         <div class="col-sm-6"><h1 id='headerTitle'>Cyber Security: Scoreboard</h1></div>
         <div class="col-sm-3"></div>
-        <div class="col-sm-2"><button type="button" class="btn btn-primary" id="login">Login</button></div>
       </div>
 		<br>
 		<table>
