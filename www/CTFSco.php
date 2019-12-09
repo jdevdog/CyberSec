@@ -30,6 +30,7 @@ table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  display: table;
 }
 
 td, th {
@@ -37,7 +38,7 @@ td, th {
   padding: 8px;
 }
 
-tr: {background-color: #f2f2f2;}
+tr: {background-color: #04315a;}
 
 tr:hover {background-color: #39CCCC;}
 
@@ -133,7 +134,7 @@ th {
         <div class="col-sm-2"><button type="button" class="btn btn-primary" id="login">Login</button></div>
       </div>
 		<br>
-		<table class="table-responsive table-bordered">
+		<table>
 		<tr>
 			<th>Team</th> <!-- score -->
 			<th>Score</th> <!-- name -->
