@@ -20,7 +20,7 @@ session_start();
     <!-- Imports Google Font Open-Sans -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <!-- General Stylesheet Link -->
-    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+    <link rel="stylesheet" type="text/css" href="./css/topnav.css">
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
