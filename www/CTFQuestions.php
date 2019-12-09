@@ -54,9 +54,9 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="./html/MainPage.html"><h3>Home</h3></a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="./html/CyberFAQs.html"><h3>Cybersecurity FAQS</h3></a>
+              <a class="dropdown-item" href="./CTFSco.php"><h3>Scoreboard</h3></a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="./index.php"><h3>Capture the Flag</h3></a>
+              <a class="dropdown-item" href="./CTFQuestions.php"><h3>Questions</h3></a>
             </div>
           </div>
         </div> <!-- img-fluid will scaled images to the size of their parent -->

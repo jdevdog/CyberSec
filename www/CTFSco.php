@@ -5,7 +5,22 @@ session_start();
 <html>
 	<head>
   	<title>Scoreboard</title>
+  	<meta charset="utf-8">
   	<link rel="stylesheet" href="./css/Score.css">
+    <!-- Bootstrap 4; Sets initial zoom level and sets the width to the screen width of the viewing device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Imports Google Font Open-Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- General Stylesheet Link -->
+    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -72,8 +87,29 @@ session_start();
 }
 </style>
 	<body>
+	  <div class="container-fluid"> <!-- container-fluid is a full width container. it scales to the screen width -->
+      <div class="row header"> <!-- each row can contain up to 12 columns. no matter what, all col must add up to 12 -->
+        <div class="col-sm-1">
+          <div class="dropdown">
+            <button type="button" class="btn" data-toggle="dropdown">
+              <img src='./include/images/burger-menu.jpg' class='img-fluid'>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="./html/MainPage.html"><h3>Home</h3></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./CTFSco.php"><h3>Scoreboard</h3></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./CTFQuestions.php"><h3>Questions</h3></a>
+            </div>
+          </div>
+        </div> <!-- img-fluid will scaled images to the size of their parent -->
+        <div class="col-sm-6"><h1 id='headerTitle'>Cyber Security: Scoreboard</h1></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2"><button type="button" class="btn btn-primary" id="login">Login</button></div>
+      </div>
+  </div>
 	<div id="navi">
-	<a class="link" href="index.php">Home</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a><a class="link" href="CTFAdmin.php">Admin</a>
+	<a class="link" href="index.php">Login</a><a class="link" href="CTFSco.php">Score</a><a class="link" href="CTFQuestions.php">Questions</a>
 	</div>
 		<br>
 		<table id="teams"class="table-responsive table-bordered">
