@@ -36,11 +36,12 @@ table {
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
+  background-color: #04315a;
 }
 
-tr: {background-color: #04315a;}
+tr: {background-color: #f2f2f2;}
 
-tr:hover {background-color: #39CCCC;}
+td, th, tr:hover {background-color: #39CCCC;}
 
 th {
   padding-top: 12px;
