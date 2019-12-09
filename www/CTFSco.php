@@ -41,7 +41,7 @@ td, th {
 
 tr: {background-color: #f2f2f2;}
 
-td, th, tr:hover {background-color: #39CCCC;}
+td:hover, th:hover, tr:hover {background-color: #39CCCC;}
 
 th {
   padding-top: 12px;
