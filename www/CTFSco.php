@@ -25,6 +25,30 @@ session_start();
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+/*Start of code from https://www.w3schools.com/css/css_table.asp */
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr: {background-color: #f2f2f2;}
+
+tr:hover {background-color: #39CCCC;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0080ff;
+  color: white;
+}
+/* End of code from https://www.w3schools.com/css/css_table.asp */
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -109,7 +133,7 @@ session_start();
         <div class="col-sm-2"><button type="button" class="btn btn-primary" id="login">Login</button></div>
       </div>
 		<br>
-		<table id="teams"class="table-responsive table-bordered">
+		<table class="table-responsive table-bordered">
 		<tr>
 			<th>Team</th> <!-- score -->
 			<th>Score</th> <!-- name -->
