@@ -50,7 +50,7 @@
 				<input type="password" name="password" id="password" class="log" placeholder="Password" required><br><br>
 				<input type="submit" value="Submit" id="btn">
 			</form>
-			<form action="./CTFQuestions.html">
+			<form action="./CTFQuestions.php">
 				<input type="submit" value="Continue as Guest" id="btn2">
 			</form>
 			<br>
