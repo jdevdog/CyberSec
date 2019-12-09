@@ -41,7 +41,9 @@ td, th {
 
 tr: {background-color: #f2f2f2;}
 
-td:hover, th:hover, tr:hover {background-color: #39CCCC;}
+tr:hover {background-color: #39CCCC;}
+
+td:hover, th:hover {background-color: transparent;}
 
 th {
   padding-top: 12px;
