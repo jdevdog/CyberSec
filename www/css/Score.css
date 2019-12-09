@@ -3,6 +3,16 @@ body{
   padding: 0;
 }
 
+button {
+	background-color:#872434;
+	color:white;
+	padding:14px 20px;
+	margin:8px 0px;
+	font-size:16px;
+	border:none;
+	border-radius:12px;
+	cursor:pointer;
+}
 
 #navi{
   	padding-top: 10px;
